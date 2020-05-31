@@ -1,0 +1,3496 @@
+\documentclass[11pt]{amsbook}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{../HBSuerDemir}	% ------------------------
+
+%\usepackage[update,prepend]{epstopdf}
+
+\usepackage{epstopdf}
+\epstopdfsetup{outdir=./images}
+\epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+
+\setcounter{tocdepth}{3}
+
+\usepackage{fancyhdr} % Header/Footer
+\pagestyle{fancy}
+%\fancyhead{}
+%\fancyhead[CO,CE]{óDraftó}
+\fancyfoot{}
+%\fancyfoot[CO,CE]{Draft}
+%\fancyfoot[RO,LE] {\thepage}
+\fancyfoot[L]{\footnotesize 
+Freshman Calculus by Suer \& Demir  \textbf{DRAFT} \\
+\LaTeX  by Haluk Bingol 
+\href{http://www.cmpe.boun.edu.tr/~bingol}
+{http://www.cmpe.boun.edu.tr/~bingol} 
+%\large 
+%\footnotesize 
+\today}
+\fancyfoot[R]{{\thepage} of \pageref{LastPage}}
+
+
+\begin{document}
+
+
+
+% -------------------------------------------------------------------
+\chapter{Function, Limit, Continuity}
+\label{chap:FuncLimCont}
+
+
+
+
+% -------------------------------------------------------------------
+\section{Numbers}
+\label{sec:Numbers}
+%:b1p1/001 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/001}
+% ++++++++++++++++++++++++++++++++++++++
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{Integers}
+\label{subsec:Integers}
+
+Following historical development, the earliest numbers were the 
+\hDefined{counting numbers} 
+$1, 2, 3, \dotsc, n, \dotsc$. 
+Introducing the number zero, one obtain the numbers 
+$0\ 1, 2, \dotsc, n, \dotsc$ 
+called the 
+\hDefined{natural numbers}. 
+The natural numbers, except 0, that is, the counting numbers are all positive and are referred to as 
+\hDefined{positive integers}. 
+Assigning "-" sign to these numbers one gets the 
+\hDefined{negatives integers}, namely, 
+$-1, -2, -3, \dotsc$
+A positive integer, a negative integer or zero is called an 
+\hDefined{integer}.
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{Rational Numbers}
+\label{subsec:RationalNumbers}
+
+Any number in the form of a ratio $p/q$ of two integers 
+($p \ne 0$) is called a 
+\hDefined{rational number} or a 
+\hDefined{fraction}.
+Any integer is a rational number ($p=p/1$). 
+Thus 3/4, 17/5, -11/7, 6, -9 are rational numbers.
+
+The decimal expansion of any rational number $p/q$ obtained by ordinary division is either finite or else infinite. It is know from Arithmetic that an infinite expansion of a rational number contains a repeating block as given in the following examples:
+\begin{align*}
+	0,19771977...1977...  \quad &(= 0,\overline{1977}) \\
+	-5,112323...23.. \quad &(= -5,11\overline{23})
+\end{align*}
+A finite expansion can be considered as 
+an infinite expansion with ``0'' as repeating block:
+\[
+	12,75 \quad (= 1275,\overline{0}) 
+\]
+
+%: b1p1/002 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/002}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{exmp}
+	Find the (repeating) decimal expansion of 
+	the rational number $152/55$.
+	
+	Dividing $152$ by $55$ one gets~\footnote{@HB needs correction}
+	\[
+		\begin{array}{lr}
+		152|\frac{55}{2,76363\cdots 63\cdots =2,76\overline{63}} \\
+		\frac{|110\quad}{420} \\
+		\frac{|385\quad}{150} \\
+		\end{array}
+	\]
+\end{exmp}
+
+Conversely, any decimal expansion with repeating block (\hDefined{cyclic expansion}) represents a rational number.
+
+\begin{exmp}
+	Express the repeating decimal expansion 
+	$3,71\overline{05}$ as a ratio of two integers.
+	\begin{hSolution}
+		Set $r = 3,71\overline{05}$.
+		Multiply each side by $1000$ to bring ``,'' 
+		just after the repeating block, 
+		and also multiply each side by $100$ to bring ``,'' 
+		just before the repeating block:
+		\begin{center}
+		\begin{tabular}{rlr}
+			$10000 r$	&= 	&$37105,\overline{05}$ \\
+			$100 r$ 	&= 	&$371,\overline{05}$ \\
+%			\hline
+%			$9900 r$	&= 	&$36734,00$
+		\end{tabular}
+		\end{center}
+		
+		Subtraction gives
+		\begin{align*}
+			9900 r &= 36734 \\
+			r &= \frac{36734}{9900}
+		\end{align*}
+	\end{hSolution}
+\end{exmp}
+
+\begin{hProperty} 
+If 
+$r_{1} (=p_{1}/q_{1})$, 
+$r_{2} (=p_{2}/q_{2})$ 
+are two rational numbers, then the numbers 
+%: b1p1/003 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/003}
+% ++++++++++++++++++++++++++++++++++++++
+\noindent
+\begin{hbColi}{2}
+	
+	\item 
+	$r_{1}+r_{2}  
+	\hPairingParan{\dfrac{p_{1}}{q_{1}} 
+		+ \dfrac{p_{2}}{q_{2}}
+	= \dfrac{p_{1} q_{2} + p_{2} q_{1}}
+		{q_{1} q_{2}}}$,
+
+	\item 
+	$r_{1}-r_{2} 
+	\hPairingParan{\dfrac{p_{1}}{q_{1}} 
+		- \dfrac{p_{2}}{q_{2}}
+	= \dfrac{p_{1} q_{2} - p_{2} q_{1}}
+		{q_{1} q_{2}}}$,
+
+	\item 
+	$r_{1} \cdot r_{2}
+	\hPairingParan{\dfrac{p_{1}}{q_{1}} 
+		\cdot \dfrac{p_{2}}{q_{2}}
+	= \dfrac{p_{1} p_{2}}
+	{q_{1} q_{2}}}$,
+
+	\item 
+	$r_{1}:r_{2}
+	\hPairingParan{\dfrac{p_{1}}{q_{1}} 
+		: \dfrac{p_{2}}{q_{2}}
+	= \dfrac{p_{1} q_{2}}
+		{q_{1} p_{2}}}$
+\end{hbColi} 
+are all rational.
+\end{hProperty}
+
+\begin{cor}
+	Between any two distinct rational numbers 
+	there exists at least one rational number, 
+	hence infinitely many.
+
+	\begin{proof}
+		Let the given rational numbers be $r_{1}$ and $r_{2}$ :
+		$r_{1} + r_{2}$ rational 
+		$\Longrightarrow$ 
+		$\dfrac{1}{2}(r_{1} + r_{2})$ is rational.
+		(why this arithmetic mean is between $r_{1}$ and $r_{2}$?) 
+		
+		This process can be continued indefinitely.
+	\end{proof}
+\end{cor}
+
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{Irrational numbers}
+\label{subsec:IrrationalNumbers}
+
+A number which is not rational is called an 
+\hDefined{irrational number}. 
+Since any cyclic decimal expansion is a rational number, 
+then non cyclic ones represent irrational numbers:
+\begin{align*}
+	0,81881888188881\cdots 
+	&\text{ (Number of 8's increases by 1 in each step)} \\
+	4,303003000300003\cdots 
+	&
+\end{align*}
+
+The existence of irrational numbers may also be shown 
+by the following theorem:
+%: b1p1/004 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/004}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{thm}
+	If $n$ is a positive prime number, 
+	then $\sqrt{n}$ is irrational.
+
+	\begin{proof}
+		Suppose $\sqrt{n} = p / q$ 
+		where the integers $p$, $q$ have 
+		no common factor (divisor) other than 1. 
+		Any fraction can be reduced into this form by simplification.
+		\[
+			\sqrt{n} = p / q  
+			\Longrightarrow 
+			q^{2} n = p^{2}
+		\]
+		Since $n \mid q^{2} n$ $(n \text{ divides } q^{2}n)$, 
+		then 
+		$n \mid p p$ implying $n \mid p$. 
+		Therefore for some integer $k$ 
+		we have $p = k n$.
+		\[
+			q^{2} n = k^{2} n^{2} 
+			\Longrightarrow 
+			k^{2} n = q^{2} 
+			\Longrightarrow 
+			n \mid q.
+		\]
+		The results $n \mid p$, $n \mid q$ show that 
+		$p$, $q$ have a common factor $n ( > 1 )$, 
+		contradicting the assumption that 
+		$p$, $q$ had no common factor.
+	\end{proof}
+\end{thm}
+
+
+Some irrational numbers of this form are 
+\[
+	\sqrt{2}, 
+	\sqrt{3}, 
+	\sqrt{5}, 
+	\sqrt{7}
+	\quad 
+	\text{ (Why $\sqrt{4}$ is not irrational?)}
+\]
+
+\begin{hProperty}
+	Let $r$ be a rational and $\alpha$ be an irrational number.
+	Then 
+	\begin{hbColi}{4}
+		\item $r + \alpha$
+		\item $r - \alpha$
+		\item $r \alpha$
+		\item $r / \alpha$
+	\end{hbColi}
+	are all irrational.
+
+	\begin{proof}[Proof of (i)]
+		Suppose that $r + \alpha$ is equal to a rational number $s$.
+		Then, 
+		$r + \alpha = s$ 
+		$\Longrightarrow$ 
+		$\alpha = s - r$
+		$\Longrightarrow$ 
+		$\alpha$ 
+		is a rational number, 
+		since $s - r$ is rational. 
+		This contradicts the hypothesis.
+		Hence $r + \alpha$ is irrational.
+	\end{proof}
+	The proofs of other cases can be done similarly. \\
+\end{hProperty}
+
+
+\begin{rem}
+	The sum, difference, product and the ratio of two irrational numbers may not be an irrational number: \\
+{\color{blue} % ~~~~
+		\begin{multicols}{2}
+		$(3 + \sqrt{2}) + (5 - \sqrt{2}) = 8$,\\
+		$\hPairingParan{\dfrac{2}{3} + \sqrt{5}}
+		\hPairingParan{\dfrac{2}{3} - \sqrt{5}} 
+		= -\dfrac{41}{9}$,\\
+	\columnbreak
+		$(3 + \sqrt{2}) - (5 + \sqrt{2}) = -2$,\\
+		$\sqrt{18} / \sqrt{2} = 3$.
+	\end{multicols}
+} % color ~~~~
+
+	\begin{tabular}{ll}
+		$(3 + \sqrt{2}) + (5 - \sqrt{2}) = 8$, 
+		& $(3 + \sqrt{2}) - (5 + \sqrt{2}) = -2$, \\
+		$\hPairingParan{\dfrac{2}{3} + \sqrt{5}}
+		\hPairingParan{\dfrac{2}{3} - \sqrt{5}} 
+		= -\dfrac{41}{9}$, \quad \quad
+		& $\sqrt{18} / \sqrt{2} = 3$.
+	\end{tabular}
+\end{rem}
+
+\begin{cor}
+	Between any two distinct rational numbers, 
+	there exists at least one irrational number, 
+	and hence infinitely many.
+
+	\begin{proof}		
+		Let the given rational numbers be $r_{1}$ and $r_{2}$ 
+		($r_{1} < r_{2}$).
+		$\sqrt{2}$ being irrational, 
+		for a sufficiently large positive integer $m$, 
+		the irrational number $\sqrt{2} / m$ is less than 
+		the difference $r_2 - r_{1}$. 
+		Then $r_{1} + (\sqrt{2} / m)$ is irrational and 
+		lies between $r_{1}$ and $r_{2}$.
+		
+		For all integers $n > m$ the irrational numbers 
+		$r_{1} + (\sqrt{2}/n)$ lie between $r_{1}$ and $r_{2}$. 
+	\end{proof}
+\end{cor}
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{Real numbers}
+\label{subsec:RealNumbers}
+
+A rational or an irrational number is called a 
+\hDefined{real number}. 
+
+The four arithmetic operations (rational operations) 
+for any two real numbers will always yield  real numbers 
+(excluding the case $a / b$ where $b = 0$).
+
+The above definition provides a classification of real numbers as rational and irrational. 
+Real numbers can also be classified as algebraic and non-algebraic (transcendental) numbers: 
+The roots of polynomial equation 
+\[
+	a_{0} x^{n} + \dotsb + a_{n-1} x + a_{n} = 0
+\]
+with rational coefficients are called 
+\hDefined{algebraic numbers}, 
+and non algebraic real numbers are called 
+\hDefined{transcendental numbers}.
+
+According to this definition all rational numbers are algebraic 
+$(x - p / q = 0)$. 
+%According to this definition all rational numbers are algebraic 
+%$\hPairingParan{x - \dfrac{p}{q} = 0}$. 
+Some irrational numbers which are algebraic are 
+$\sqrt{2}$, 
+$5 - \sqrt{3}$; for 
+$x = \sqrt{2} 
+\Longrightarrow 
+x^{2} - 2 = 0$ and 
+%: b1p1/006 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/006}
+% ++++++++++++++++++++++++++++++++++++++
+$x = 5 - \sqrt{3}$ 
+$\Longrightarrow$ 
+$(x-5)^{2} = 3$ 
+$\Longrightarrow$ 
+$x^{2} - 10 x + 22 = 0$.
+Some irrational numbers which are transcendental 
+are the well known numbers $\pi$ and 
+the base $e$ of natural logarithm.
+
+
+
+
+% -------------------------------------------------------------------
+\subsubsection{Real number axis}
+\label{subsubsec:RalNumberAxis}
+
+A line (straight line) on 
+which real numbers are represented in some manner is called a 
+\hDefined{real number axis} 
+or shortly a 
+\hDefined{number axis}. 
+In general a representation is done by choosing on the axis 
+a fixed point 0 as origin corresponding to zero, 
+a positive sense, and 
+a unit length to locate first, 
+integers in succession as seen in Fig~\ref{fig:numberAxis}.
+
+\begin{figure}
+\center
+	\begin{picture}(60,15)(-25,-10)
+		\setlength{\unitlength}{2pt}
+	% \graphpaper(0,0)(80,70)
+		\put(25,-2){\makebox(0,0)[tl]{$X$}}
+		\put(-25,0){\vector(1,0){50}} % x-axis
+		\multiput(-20,-1)(10,0){5}{\line(0,1){2}} % x-axis
+	%
+		\put(-20,-2){\makebox(0,0)[tc]{$-2$}}
+		\put(-10,-2){\makebox(0,0)[tc]{$-1$}}
+		\put(0,-2){\makebox(0,0)[tc]{$0$}}
+		\put(10,-2){\makebox(0,0)[tc]{$1$}}
+		\put(20,-2){\makebox(0,0)[tc]{$2$}}
+	\end{picture}
+	\caption{Number axis}
+	\label{fig:numberAxis}
+\end{figure}
+
+By the use of Thales Theorem, 
+a rational number $p/q$ can be constructed on the number axis. 
+To find the point on the number axis 
+corresponding to the number $p/q$, 
+a ray $OT$ (non parallel to $0X$) is drawn 
+on which line segments $[OP]$, $[OQ]$ of lengths $p$, $q$ units are taken (Fig~\ref{fig:constructionRationalNumber}). 
+Then $Q$ is joined to the point represented by 1. 
+The line passing through $P$ and parallel to $[Q1]$ intersects the number axis at the required point.
+
+When $p < q < 0$, the point $Q$ is joined to 
+the point representing -1 instead of 1.
+
+\begin{figure}
+	\center
+	\begin{picture}(60,15)(-25,-10)
+	\end{picture}
+	\caption{Construction of a rational number}
+	\label{fig:constructionRationalNumber}
+\end{figure}
+
+%: b1p1/007 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/007}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/008 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/008}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/009 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/009}
+% ++++++++++++++++++++++++++++++++++++++
+The positive square root of $a ( > 0)$ is denoted by $\sqrt{a}$ and 
+the negative one by $- \sqrt{a}$. 
+Thus, 
+\[
+	\sqrt{4} = 2, \quad 
+	-\sqrt{4} = -2, \quad 
+	\sqrt{(-3)^{2}} = \sqrt{9} = 3.
+\]
+
+The number $0$ which is neither positive nor negative 
+has only one square root, namely $0$, 
+as a double root of $x^{2} = 0$.
+
+
+
+
+% -------------------------------------------------------------------
+\subsubsection{Absolute Value}
+\label{subsubsec:AbsoluteValue}
+
+The \hDefined{absolute value} of a real number $a$ is 
+a non-negative real number, denoted by $\hAbs{a}$ and defined by
+\[
+	\hAbs{a} = \sqrt{a^2} \quad (\geq 0)
+\]
+or equivalently, by
+\[ 
+	\hAbs{a} 
+	= 
+	\begin{cases}
+		a, 	&a > 0, \\
+		0,	&a = 0, \\
+		-a,	&a < 0.
+	\end{cases}
+\]
+
+The equivalency of two definitions can be seen 
+by considering three cases 
+$a > 0, \ a=0, \ a < 0$ separately.
+
+\begin{tabular}{ll}
+$\hAbs{5} = \sqrt{5^2} = 5$, 
+&$\hAbs{-3} = \sqrt{(-3)^2} = \sqrt{9} = 3$ \\
+$\hAbs{-2} = -(-2) = 2$, \quad \quad
+& $\hAbs{2} = 2$
+\end{tabular}
+
+As an immediate corollary we have
+
+\begin{cor} 
+	\begin{tabular}{ll}
+	1. $\hAbs{a}^{2} = a^{2}$ \quad \quad
+	2. $-\hAbs{a} \leq a \leq |a|$.
+	\end{tabular} 
+\end{cor}
+Some other properties are stated in the next theorem.
+\begin{thm}
+	If $a$, $b$ are real numbers, then \\
+	%: b1p1/010 ++++++++++++++++++++++++++++++++++++++
+	\hPage{b1p1/010}
+	% ++++++++++++++++++++++++++++++++++++++
+	\begin{tabular}{ll}
+		1. $\hAbs{ab} = \hAbs{a} \hAbs{b}$ 
+		&2. $\hAbs{\frac{a}{b}} = \frac{\hAbs{a}}{\hAbs{b}}$\\ 
+		3. $\hAbs{a + b} \leq \hAbs{a} + \hAbs{b}$ \quad \quad
+	\end{tabular}
+{\color{blue} % ~~~~
+		<<<< HERE
+} % color ~~~~
+	\begin{hbColi}{2}
+		\item $\hAbs{ab} = \hAbs{a} \hAbs{b}$ 
+		\item $\hAbs{\frac{a}{b}} = \frac{\hAbs{a}}{\hAbs{b}}$
+		\item $\hAbs{a + b} \leq \hAbs{a} + \hAbs{b}$ \quad \quad
+	\end{hbColi}
+
+	\begin{proof}
+	\begin{enumerate}
+	
+		\item [1.]
+		$\hAbs{ab} 
+		= \sqrt{(ab)^{2}}  
+		= \sqrt{a^{2}}\sqrt{b^{2}} 
+		= \hAbs{a} \hAbs{b}$
+		
+		\item [2.]
+		Proved similarly.
+		
+		\item [3.]
+		\begin{align*}
+			\hAbs{a + b}^{2} 
+			&= (a+b)^{2} \\
+			&= a^{2} + 2ab + b^{2} \\
+			&= \hAbs{a}^{2} + 2ab + \hAbs{b}^{2} \\
+			&\leq \hAbs{a}^{2} + 2 \hAbs{a} \hAbs{b} + \hAbs{b}^{2} \\
+			&= (\hAbs{a} + \hAbs{b})^{2} \\
+			\hAbs{a + b}^{2} 
+			&\leq (\hAbs{a} + \hAbs{b})^{2} 
+		\end{align*}
+		where 
+		$\hAbs{a + b}$, 
+		$\hAbs{a} + \hAbs{b}$ 
+		being non-negative, taking positive square roots of each side,
+		\[
+			\hAbs{a + b} \leq \hAbs{a} + \hAbs{b}
+		\]
+		follows.
+	\end{enumerate}
+	\end{proof}
+\end{thm}
+
+Changing $b$ to $-b$ in the last inequality 
+the latter is seen to include the inequality:
+\[
+	\hAbs{a + b} \leq \hAbs{a} + \hAbs{b}.
+\]
+
+
+
+
+% -------------------------------------------------------------------
+\subsubsection{Distance}
+\label{subsubsec:Distance}
+
+The \hDefined{distance} between two points $A$ and $B$ with coordinates $a$, $b$ on the number axis, denoted by
+\[
+	d(A, B)= d(a, b) = \hAbs{AB},
+\]
+is defined as the non negative real number $\hAbs{b - a}$.
+
+%: b1p1/011 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/011}
+% ++++++++++++++++++++++++++++++++++++++
+
+\begin{exmp} 
+	\begin{tabular}{lll}
+		& $d(3, 5) = \hAbs{5 - 3} = 2$
+		& $d(3, 5) = \hAbs{3 - 5} = 2$ \\
+		& $d(3, -5) = 3 + 5 = 8$ \quad \quad
+		& $d(-2, 7) = \hAbs{7 + 2} = 9$
+	\end{tabular}
+\end{exmp}
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{Complex numbers}
+\label{subsec:ComplexNumbers}
+
+The roots of the quadratic equation 
+\[
+	a x^{2} + bx + c = 0 \quad (a \ne 0)
+\]
+with real coefficients, are given by
+\[
+	x_{1,2} = \frac{-b \pm \sqrt{b^{2} - 4ac}}{2a}
+\]
+
+They are real if and only if  (iff) the discriminant
+$\Delta = b^{2} - 4ac$ is non negative. 
+Then for a real $k$, if $\Delta = -k^{2} < 0$ the roots become non real and have the form
+\[
+	x_{1,2} = \frac{-b \pm ki}{2a} = u + iv
+\]
+where $u$ and $v$ are real numbers and 
+$i=\sqrt{-1}$, unit imaginary number, with $i^{2}$ = -1.
+
+Hence in general case for any $\Delta$ the roots of a quadratic equation are numbers of the form
+\[
+	u + iv
+\]
+which is called a \hDefined{complex number}.
+
+A complex number
+\[
+	z = a + i b
+\]
+%: b1p1/012 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/012}
+% ++++++++++++++++++++++++++++++++++++++
+is real or imaginary according as $b = 0$ or $b \ne 0$. 
+The real numbers $a$ and $b$ are called, respectively, the \hDefined{real part} and 
+\hDefined{imaginary part} of $z$, written
+\[
+	a = \text{Re } z, \quad b = \text{Im } z.
+\]
+
+\begin{defn}[Equality]
+	Two complex numbers are equal 
+	iff 
+	their real parts are equal and imaginary parts equal:
+	\[
+		a + ib = c + id  
+		\iff
+%		\hDefinitionIFF   
+		a = c, b = d.
+	\]
+	Hence $a + ib = 0$ $\iff$  $a = 0, b = 0$.
+\end{defn}
+
+\begin{defn}[Conjugation]
+	If $z = a + ib$, then the number $a - ib$ is called the 
+	\hDefined{complex conjugate} or simply 
+	\hDefined{conjugate} of z, 
+	written $\overline{z} =a - ib$. 
+\end{defn}
+
+From $a +ib = a - ib \implies b = 0$, it follows that a complex number is real iff it is equal to conjugate:
+\[
+	z = \overline{z} 
+	\iff 
+	z \text{ is real}.
+\]
+
+\begin{defn}[Addition and subtraction]
+	If $z_{1} = a_{1} + ib_{1}$, $z_{2} = a_{2} + ib_{2}$, 
+	then their 
+	\hDefined{sum} and 
+	\hDefined{difference} 
+	are defined as follows:
+	\begin{center}
+	\begin{tabular}{c}
+		1. $z_{1} + z_{2} = a_{1} + a_{2} + i( b_{1} + b_{2} )$,\\
+		2. $z_{1} - z_{2} = a_{1} - a_{2} + i( b_{1} - b_{2} )$.
+	\end{tabular}
+	\end{center}
+\end{defn}
+
+One concludes that 
+\[
+	\overline{ z_{1} + z_{2} } 
+	= \overline{z_{1}} + \overline{z_{2}},
+	\quad
+	\overline{ z_{1} - z_{2} } 
+	= \overline{z_{1}} - \overline{z_{2}}.
+\]
+In words: 
+The conjugate of a sum (difference) is the sum (difference) of conjugates.
+
+A complex number is multiplied by a real scalar $k$ 
+by multiplying its real and imaginary parts by $k$:
+%: b1p1/013 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/013}
+% ++++++++++++++++++++++++++++++++++++++
+\[
+	k(a + ib) = ka + ikb.
+\].
+
+\begin{exmp}
+	Simplify
+	\begin{hEnumerateAlpha}
+		\item 
+		$u = (2 - 3i) - 2(4 + 2i)$, 
+		
+		\item 
+		$v = \overline{2(3 - 2i) + 3i}$.
+	\end{hEnumerateAlpha}
+	\begin{hSolution}
+		\begin{hEnumerateAlpha}
+			
+			\item 
+			$u 
+			= 2 - 3i - 8 - 4i 
+			= 2 - 8 - (3i + 4i) 
+			= -6 - 7i$. 
+			
+			\item 
+			$v 
+			= \overline{6 - 4i + 3i} 
+			= \overline{6 - i} 
+			= 6 + i$.
+		\end{hEnumerateAlpha}
+	\end{hSolution}
+\end{exmp}
+
+\begin{defn}[Multiplication]
+	The \hDefined{product} of two complex numbers 
+	is obtained as follows:
+	\begin{align*}
+		(a + ib)(c + id) 
+		&= ac + iad + ibc + i^{2}bd \\
+		&= ac + i(ad + bc) - bd \quad (\text{Note that } i^{2} = -1)\\
+		&= (ac - bd) + i(ad + bc)
+	\end{align*}
+\end{defn}
+
+\begin{cor}
+	$z = a + ib$ 
+	$\Longrightarrow$ 
+	$z \overline{z} = a^{2} + b^{2}$.
+\end{cor}
+
+\begin{exmp}
+	Perform multiplications:
+	\begin{hEnumerateAlpha}
+		
+		\item 
+		$u = (2 - 3i)(5 + i)$,
+		
+		\item 
+		$v = (2 - 3i)(2 + 3i)$.
+	\end{hEnumerateAlpha}
+	\begin{hSolution}
+		\begin{hEnumerateAlpha}
+			
+			\item 
+			$u = 10 + 2i - 15i - 3i^{2}
+			= 10 - 13i + 3 
+			= 13 - 13i$.
+			
+			\item 
+			$v = (2 - 3i)(2 + 3i) 
+			= 2^{2} + 3^{2} 
+			= 4 + 9 = 13$.
+		\end{hEnumerateAlpha}
+	\end{hSolution}
+\end{exmp}
+
+\begin{defn}
+	In view of above corollary, 
+	\hDefined{division $u/v$} is carried out 
+	by multiplying the numerator and denominator 
+	by the conjugate $\overline{v}$ of the denominator:
+	\[
+		\dfrac{u}{v} 
+		= \dfrac{u}{v} \dfrac{\overline{v}}{\overline{v}}
+		= \dfrac{1}{v \overline{v}} u \overline{v}.
+	\]
+\end{defn}
+%: b1p1/014a ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/014a}
+% ++++++++++++++++++++++++++++++++++++++
+
+
+
+
+% -------------------------------------------------------------------
+\subsubsection{Geometric Representation}
+\label{subsubsec:GeometricRepresentation}
+
+\begin{figure}
+\center
+%	\begin{picture}(60,55)(-15,-20)
+	\begin{picture}(60,65)(-15,-20)
+		\setlength{\unitlength}{2pt}
+%		\graphpaper(0,0)(80,70)
+		\put(-15,0){\vector(1,0){50}} % x-axis
+		\put(0,-15){\vector(0,1){40}} % y-axis
+		\multiput(-10,-1)(10,0){5}{\line(0,1){2}} % x-axis
+		\multiput(-1,-10)(0,10){4}{\line(1,0){2}} % y-axis
+		\multiput(0,10)(4,0){3}{\line(1,0){2}} 
+		\multiput(10,0)(0,4){3}{\line(0,1){2}} 
+		\multiput(0,17)(4,0){6}{\line(1,0){2}} 
+		\multiput(23,0)(0,4){4}{\line(0,1){2}} 
+		\put(-1,-1){\makebox(0,0)[tr]{$O$}}	% O
+		\put(10,-2){\makebox(0,0)[tc]{$1$}}	% 1
+		\put(23,-2){\makebox(0,0)[tc]{$x$}}	% x
+		\put(23,0){\makebox(0,0)[bl]{$X$}}	% X
+		\put(-1,-1){\makebox(0,0)[tr]{$O$}}	% O
+		\put(-1,-1){\makebox(0,0)[tr]{$O$}}	% O
+%		\put(10,-5){\makebox(0,0)[bl]{$1$}}	% 1
+%		\put(-3,10){\makebox(0,0)[bl]{$i$}}	% i
+		\put(-2,10){\makebox(0,0)[cr]{$i$}}	% i
+		\put(-2,17){\makebox(0,0)[cr]{$iy$}}	% iy
+		\put(0,17){\makebox(0,0)[bl]{$Y$}}	% Y
+		\put(23,17){\makebox(0,0)[bl]{$P$}}	% P
+		\put(23,17){\makebox(0,0)[tl]{$x+iy$}}	% x+iy
+		\put(10,10){\makebox(0,0)[bl]{$1+i$}}	% 1+i
+	\end{picture}
+	\caption{}
+	\label{fig:complexRepresentationA}
+\end{figure}
+
+\begin{figure}
+\center
+	\begin{picture}(100,90)(-35,-40)
+		\setlength{\unitlength}{2pt}
+		% \graphpaper(0,0)(80,70)
+		\put(-35,0){\vector(1,0){100}} % x-axis
+		\put(0,-25){\vector(0,1){50}} % y-axis
+		\multiput(-30,-1)(10,0){7}{\line(0,1){2}} % x-axis
+		\multiput(-1,-20)(0,10){5}{\line(1,0){2}} % y-axis
+		\put(65,-2){\makebox(0,0)[tl]{$X$}}
+		\put(2,25){\makebox(0,0)[bl]{$iY$}}
+		% 1
+		\put(10,2){\makebox(0,0)[bl]{$1$}}
+		% i
+		\put(2,10){\makebox(0,0)[bl]{$i$}}
+		% 3+2i
+		\put(30,20){\makebox(0,0)[bl]{$3+2i$}}
+		\multiput(0,20)(4,0){8}{\line(1,0){2}} 
+		\multiput(30,0)(0,4){6}{\line(0,1){2}} 
+		% 2-2i
+		\put(20,-20){\makebox(0,0)[tl]{$2-2i$}}
+		\multiput(0,-20)(4,0){6}{\line(1,0){2}} 
+		\multiput(20,0)(0,-4){6}{\line(0,1){2}} 
+		% -2+i
+		\put(-20,10){\makebox(0,0)[br]{$-2+i$}}
+		\multiput(0,10)(-4,0){6}{\line(1,0){2}} 
+		\multiput(-20,0)(0,4){3}{\line(0,1){2}} 
+		% -1-2i
+		\put(-10,-20){\makebox(0,0)[tr]{$-1-2i$}}
+		\multiput(0,-20)(-4,0){3}{\line(1,0){2}} 
+		\multiput(-10,0)(0,-4){6}{\line(0,1){2}} 
+		% z and z congugate
+		\put(50,16){\makebox(0,0)[bl]{$z$}}
+		\put(50,-16){\makebox(0,0)[tl]{$\overline{z}$}}
+		\multiput(50,15)(0,-4){8}{\line(0,1){2}} 
+%		\multiput(-10,0)(0,-4){6}{\line(0,1){2}} 
+	\end{picture}
+	\caption{}
+	\label{fig:complexRepresentationB}
+\end{figure}
+
+By taking two perpendicular axes with a common origin $0$, 
+and considering 
+the horizontal axis as the \textit{real axis}
+and
+the vertical axis as the \textit{imaginary axis}
+containing pure imaginary numbers
+(See 
+\reffig{fig:complexRepresentationA} and 
+\reffig{fig:complexRepresentationB}),
+any complex numbers $z = x + iy$ will be represented 
+by a point $P$ as the vertex of the rectangle $OXPY$ 
+where 
+$X$ is on the real axis with abscissa $x$, and 
+$Y$ is on the imaginary axis $iy$. 
+The plane in which complex numbers represented this way is called \hDefined{complex plane} 
+(\hDefined{z-plane} or
+\hDefined{ARGAND plane}).
+
+On the accompanying \reffig{fig:complexRepresentationB}, 
+the numbers 
+$1$, 
+$i$, 
+$3 + 2i$, 
+$-2 + i$, 
+$-1 - 2i$, 
+$2 - 2i$ are plotted.
+
+The conjugate numbers $z = x + iy$ and $z = x - iy$ will 
+symmetrically placed with respect to real axis.
+
+%: b1p1/014 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/014}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{exmp}
+	$\dfrac{2 + 3i}{1 - i} 
+	= \dfrac{2 + 3i}{1 - i} \dfrac{1 + i}{1 + i}
+	= \dfrac{-1 + 5i}{2}
+	= - \dfrac{1}{2} + \dfrac{5}{2} i$
+\end{exmp}
+
+One may show that 
+\[
+	\overline{z_{1} z_{2}} 
+	= \overline{z_{1}} \overline{z_{2}},
+	\quad 
+	\overline{z_{1} / z_{2}} 
+	= \overline{z_{1}} / \overline{z_{2}}
+\]
+In words: 
+The conjugate of a product (ratio) is 
+the product (ratio) of conjugates.
+
+\begin{thm}[The Fundamental Theorem of Algebra]
+	A polynomial equation with real coefficient of degree $n$ 
+	has at least one root, real or imaginary, 
+	and hence $n$ roots, real or imaginary, simple or repeated.
+
+	\begin{proof}
+		Omitted.
+	\end{proof}
+\end{thm}
+
+
+\begin{cor}
+	If a polynomial equation with real coefficients 
+	has an imaginary root 
+	it admits its conjugate as another root.
+	\begin{proof}
+		The proof is an applications of conjugation:
+		Let the equation 
+		$P(x) = a_{0} + a_{1}x + \cdots + a_{n}x^{n} = 0$ 
+		which can be represented as 
+		\[
+			P(x) = \sum_{k = 0}^{n} a_{k} x^{k} = 0 
+		\]
+		admit the imaginary number $ z $ as root.Then
+		\begin{align*}
+			0 = P(z) 
+			&= \sum a_{k} z^{k}\\
+			\Longrightarrow  0 
+			&= \overline{\sum a_{k}z^{k}} 
+			= \sum \overline{a_{k} z^{k}} 
+			= \sum \overline{a_{k}} \overline{z^{k}}\\ 
+			%&%= \sum a_{k} \overline{z^{k}}
+			&= \sum a_{k} (\overline{z})^{k}
+			%= \sum a_{k} (\overline{z})^{k} 
+			= P(\overline{z}) 
+			\Longrightarrow P(\overline{z}) = 0.
+		\end{align*}
+	\end{proof}
+\end{cor}
+
+\begin{cor}
+	A polynomial equation with real coefficients of odd degree 
+	has at least one real root.
+\end{cor}
+Polar form of complex numbers and related properties will be treated in Chapter 4.
+\footnote{@HB ref}
+%: b1p1/015 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/015}
+% ++++++++++++++++++++++++++++++++++++++
+
+We conclude this section by two classification of numbers in 
+\reffig{fig:classificationOfComplexNumbersA} and 
+\reffig{fig:classificationOfComplexNumbersB}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/SD-1-1p15A}
+	\caption{Classification of complex numbers}
+	\label{fig:classificationOfComplexNumbersA}
+\end{figure}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/SD-1-1p15B}
+	\caption{Classification of complex numbers}
+	\label{fig:classificationOfComplexNumbersB}
+\end{figure}
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{Exercises (\ref{sec:Numbers})}
+\label{subsec:Exercises}
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+\label{ex:01:001}
+	Construct the following numbers on the number axis:
+	\begin{center}
+	\begin{tabular}{cc}
+		a) 3/5
+		&b) $-7/3$ (use Thales Theorem)\\
+		c) $\sqrt{8}$ \quad \quad
+		&$\sqrt{12}$ (use Pythagorean Theorem).
+	\end{tabular}
+	\end{center}
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+\label{ex:01:002}
+Give examples of two irrational numbers such that their
+%: b1p1/016 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/016}
+% ++++++++++++++++++++++++++++++++++++++
+	\begin{center}
+	\begin{tabular}{llll}
+		a) sum
+		&b) difference
+		&c) product
+		&d) ratio
+	\end{tabular}\\
+	\end{center}
+	is a rational number.
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+\label{ex:01:003}
+	Let $e_{1}$, $e_{2}$ be two even and 
+	$o_{1}$, $o_{2}$ be two odd numbers.
+	Then prove the following:\\
+	a) 
+	$e_{1} + e_{2}$, 
+	$e_{1} e_{2}$, 
+	$o_{1} + o_{2}$ are even numbers\\	
+	b) 
+	$e_{1} + o_{1}$, 
+	$o_{1} o_{2}$
+	are odd numbers
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+\label{ex:01:004}
+	If the product of two consecutive\\
+	a) even numbers is 624,\\
+	b) odd numbers is 1155\\
+	find them.
+	[a) $\pm 24, \pm 26$,
+	b) $\pm 33, \pm35$.]
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+\label{ex:01:005}
+	If the sum of three consecutive
+	a) integers is 294,\\
+	b) even integers is 288,\\
+	c) odd integers is 327\\
+	find them.
+	[Hint: Take the middle number as a variable.]  
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+\label{ex:01:006}
+	Prove that the square\\  
+	a) of an even number is an even number.\\
+	b) of an odd number is an odd number.
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+\label{ex:01:007}
+	Prove the irrationality of the numbers\\ 
+	a) $\sqrt{7}$
+	\quad \quad
+	b) $3 + \sqrt{2}$
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+\label{ex:01:008}
+	Find the value of $\hAbs{2x+15}$ for  
+	\begin{multicols}{2}{
+	a) $x = -9$
+	
+	b) $x = -7,8$
+	}
+	\end{multicols}
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%\begin{exercise}
+%\label{ex:01:009}
+%	Show the following properties of absolute value:
+%	\begin{multicols}{2}{
+%		a) $\hAbs{a}^{2} = a^{2} $\\
+%		c) $\hAbs{a - b} = \hAbs{b - a}$\\
+%		e) $\hAbs{a b} = \hAbs{a} \hAbs{b}$\\
+%		g) $\hAbs{a + b} \leq \hAbs{a} + \hAbs{b}$
+%	\columnbreak
+%		
+%		b) $-\hAbs{a} \leq a \leq \hAbs{a} $\\
+%		d) $|a|= 0 \Leftrightarrow a = 0 $\\
+%		f) $\hAbs{a / b} = \hAbs{a} / \hAbs{b}$\\
+%		h) $\hAbs{\hAbs{a} - \hAbs{b}} \leq \hAbs{a - b}$
+%	}
+%	\end{multicols}
+%\end{exercise}
+
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V
+\begin{exercise}
+\label{ex:01:009}
+	Show the following properties of absolute value:
+	\begin{hbColi}{2}
+		\item $\hAbs{a}^{2} = a^{2} $
+		\item $\hAbs{a - b} = \hAbs{b - a}$
+		\item $\hAbs{a b} = \hAbs{a} \hAbs{b}$
+		\item $\hAbs{a + b} \leq \hAbs{a} + \hAbs{b}$
+		\item $-\hAbs{a} \leq a \leq \hAbs{a} $
+		\item $|a|= 0 \Leftrightarrow a = 0 $
+		\item $\hAbs{a / b} = \hAbs{a} / \hAbs{b}$
+		\item $\hAbs{\hAbs{a} - \hAbs{b}} \leq \hAbs{a - b}$
+	\end{hbColi}
+\end{exercise}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+%: b1p1/017 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/017}
+% ++++++++++++++++++++++++++++++++++++++
+
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+	Find the distance between the given points. 
+	First express them as absolute value, and then compute.
+\begin{center}
+\begin{tabular}{ll}
+	a) $2.72$ and $5.16$ \quad \quad b) $3.86$ and $-7.28$\\
+	c) $-3.86$ and $7.28$· d) $-1.23$ and $-12.35$
+\end{tabular}
+\end{center}	
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+	$(3 + i)^{3} = ?$ 
+	\quad [Ans. $18 + 26 i$].
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+	$\frac{2 + i}{3 - 2i} = ?$
+	\quad [Ans. $(4 + 7 i) / 13$].
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+	Write a polynomial of least degree with real coefficients 
+	having the roots $3$, $1 - 2i$. 
+	\quad [Ans. $x^{3}- 5 x^{2} + ll x - 15$].
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+	Solve for real $x$ and $y$:
+	\[
+		\frac{2 - i}{3 + iy}
+		= \frac{2x -3iy}{2 + i}
+	\quad [\text{Ans. } x = 5/6, y = 0].
+	\]
+\end{exercise}
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{exercise}
+	If $z = 5 + 4i$ find $z^{2} - 2 z + z \overline{z}$
+	\quad [Ans. $60 + 32i$].
+\end{exercise}
+
+
+
+
+% -------------------------------------------------------------------
+\section{SETS}
+\label{sec:Sets}
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{Definitions} 
+\label{subsec:Definitions}
+
+\begin{defn}
+	Any collection of objects (concrete or abstract) is called 
+	a \hDefined{set,} and 
+	the objects in the set are its \hDefined{elements} 
+	or \hDefined{members}.
+	The sets are usually represented by capital letters 
+	$A$, $B$, $\cdots$. 
+	Two sets formed by the same elements are 
+	said to be \hDefined{equal}.
+\end{defn}
+
+
+The set $A$ consisting of elements, say, 2, $a$, Ankara, $-7$, is denoted either by listing the elements within two braces, or by a diagram (Venn diagram) in which the elements
+%: b1p1/018 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/018}
+% ++++++++++++++++++++++++++++++++++++++
+are marked arbitrarily in the plane and enclosed by a closed curve:
+
+\begin{tabular}{ll} 
+	$A = \{2, a, \text{Ankara}, -7\}$
+		&\includegraphics[width=0.4\textwidth]{images/SD-1-1p18-Set2Ankara}
+\\
+	$A = \{\text{Ankara}, 2, -7, a\}$
+\end{tabular}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/SD-1-1p18-Set2Ankara}
+	\caption{Set}
+	\label{fig:Set2Ankara}
+\end{figure}
+
+The symbol 
+$\in$ is used to mean "is an element of" or "belongs to", and 
+$\notin$ is used otherwise. 
+Then
+\begin{center}
+\begin{tabular}{cccc}
+	$2 \in A$, \quad
+	& $\text{Ankara} \in A$, \quad
+	& $7 \notin A$, \quad
+	& Anka $\notin A$. 
+\end{tabular}
+\end{center}
+
+A set having finitely many elements is said to be a 
+\hDefined{finite set}, 
+and one having infinity of distinct elements an 
+\hDefined{infinite set}. 
+Thus 
+$\{ 2, a, \text{Ankara}, -7 \}$ 
+is finite, while the set 
+$\{ 1, 2, 3, \cdots, n, \cdots \}$ of natural numbers is infinite.
+
+If $S$ is a finite set, 
+the number of its distinct elements is denoted by $n(S)$.
+\footnote{@HB |S|?}
+
+\begin{exmp} 
+	\begin{hEnumerateArabic}
+	
+		\item 
+		For the set $D = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}$ of digits 
+		(\hDefined{numerals}), 
+		$n(D) = 10$.
+		
+		\item 
+		For $E = \{ \text{Venus}, \text{ Earth}, \text{ Izmir}, 
+		3, \text{ Earth}, 3, -5 \}$, 
+		$n(E) = 5$.
+	\end{hEnumerateArabic}
+\end{exmp}
+
+Another way of representing the sets is 
+by the use of a property common to all elements. 
+If such a property is expressed by a true statement $p(x)$, 
+then the symbol
+\[
+	\{ x: p(x) \} 
+	\quad 
+	\text{ or } 
+	\quad
+	\{ x \mid p(x) \}
+\]
+represents the set of all objects having the property $p(x)$.
+%: b1p1/01 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/019}
+% ++++++++++++++++++++++++++++++++++++++
+The meanings of the symbols 
+$\{ x: p(x) \text{ and } q(x) \}$ 
+and 
+$\{ x: p(x) \text{ or } q(x) \}$ 
+are clear.
+
+\begin{exmp} ( for finite sets ):
+	\begin{hEnumerateArabic}
+		
+		\item 
+		$D 
+		= \{ n: n \text{ is a digit } \} 
+		= \{ 0, 1, 2, \cdots, 9 \}$
+		
+		\item 
+		$\{ n : n \in D, \quad n \text{ is prime} \} 
+		= \{ 2, 3, 5, 7 \}$
+		
+		\item 
+		$\{ n : n \in D, \quad 1 \leq n < 7$ \} 
+		= \{ 1, 2, 3, 4, 5, 6 \}
+	\end{hEnumerateArabic}
+\end{exmp}
+
+\begin{exmp} 
+	The following infinite sets of numbers are used 
+	frequently in mathematics:
+	\begin{hEnumerateArabic}
+		
+		\item  
+		$\hSoN 
+		= \{ n: n \text{ is a natural number } \} 
+		= \{ 0, 1, 2, \cdots, n, \cdots \}$
+		
+		\item  
+		$\hSoZ 
+		= \{n: n \text{ is an integer } \} 
+		= \{ \cdots, -2, -1, 0, 1, 2, \cdots \}$
+		
+		\item  
+		$\hSoQ 
+		= \{ r: r \text{ is a rational number } \} 
+		= \{ \frac{p}{q} : p,  q \in Z, q \ne 0 \}$
+		
+		\item
+		$\hSoQ'  
+		= \{ r' : r' \text{ is an irrational number } \}$
+		
+		\item  
+		$\hSoR 
+		= \{ x: x \text{ is a real number} \} 
+		= \{ x: x \in Q \text{ or } x \in Q' \}$
+		
+		\item  
+		$\hSoC 
+		= \{ z: z \text{ is a complex number } \} 
+		= \{ a+ i b: a, b \in R  , i^{2}=-1\}$
+	\end{hEnumerateArabic}
+\end{exmp}
+
+A  set worth of mentioning is the one having no element at all. 
+It is called the \hDefined{empty set} (\hDefined{null set}) and 
+denoted by \hDefinedN{$\emptyset$}, 
+so that $n(\emptyset) = 0$.
+
+\begin{exmp} 
+	Each one of the following is the null set $\emptyset$:
+	\begin{hEnumerateArabic}
+		
+		\item 
+		$\{ x : x^{2} - 1 = 0, \; x \in \hSoR \}$
+		
+		\item 
+		$\{ x : \hAbs{x} < 0, \; x \in \hSoR \}$
+		
+		\item 
+		$\{ x : x$ is a box, $x$ is open and $x$ is closed $\}$
+	\end{hEnumerateArabic}
+\end{exmp}
+
+In any particular discussion, 
+a set that contains all the objects that enter into that discussion 
+is called  \hDefined{the universal set}. 
+%: b1p1/020 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/020}
+% ++++++++++++++++++++++++++++++++++++++
+Clearly numerous universal sets exist corresponding to 
+numerous particular discussions. 
+A universal set is denoted by \hDefinedN{U}.
+
+If real numbers are taken into consideration, 
+$\hSoR$ is the universal set. 
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{Subsets}
+\label{subsec:Subsets} 
+
+A set $A$ is said to be a \underline{subset} of a set $B$, 
+if every element of $A$ is also an element of $B$, 
+and one writes 
+\[
+	A \subseteq B
+	\quad
+	\text{(Read: $A$ is a subset of $B$)}
+\]
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.3\textwidth]{images/SD-1-1-SetSubset}
+	\caption{$A \subseteq B$}
+	\label{fig:SDb1p1SetSubset}
+\end{figure}
+where $B$ is said to be a \hDefined{superset} of $A$.
+
+It follows that any set is a subset of itself, 
+and we agree that the empty set is a subset of any set. 
+Thus 
+\[
+	\emptyset 
+	\subseteq \emptyset
+	\subseteq \{ 1 \}
+	\subseteq \{ 1 \}
+	\subseteq \{ 1, 2, 3 \}
+	\subseteq \hSoN 
+	\subseteq \hSoZ
+	\subseteq \hSoQ
+	\subseteq \hSoR
+	\subseteq \hSoC.
+\]
+
+If $A \subseteq B$, 
+but $A \ne B$ one uses the notation
+\[
+	A \subset B
+	\quad
+	\text{(Read: $A$ is a \hDefined{proper subset} of $B$)}
+\]
+where $B$ contains at least one element not contained in $A$. 
+With this notation the above relations can be written in the form
+\[
+	\emptyset 
+	\subseteq \emptyset
+	\subset   \{ 1 \}
+	\subseteq \{ 1 \}
+	\subset   \{ 1, 2, 3 \}
+	\subset   \hSoN 
+	\subset   \hSoZ
+	\subseteq \hSoQ
+	\subseteq \hSoR
+	\subseteq \hSoC.
+\]
+
+\begin{exmp} 
+	Write all subsets of $\{ 1, 2, 3 \}$.
+
+	\begin{hSolution}
+		$\emptyset$, 
+		$\{1\}$,
+		$\{2\}$,
+		$\{3\}$,
+		$\{1,2\}$,
+		$\{1,3\}$,
+		$\{2,3\}$,
+		$\{1,2,3\}$.
+	\end{hSolution}
+\end{exmp}
+
+If each of two sets is a subset of the other, then clearly they are equal, and vice versa:
+
+%: b1p1/021 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/021}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/022 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/022}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/023 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/023}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/024 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/024}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/025 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/025}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/026 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/026}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/027 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/027}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/028 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/028}
+% ++++++++++++++++++++++++++++++++++++++
+\footnote{21-28 missing}
+
+
+
+% -------------------------------------------------------------------
+\section{Induction} 
+
+Some theorems $p(n)$ in mathematics 
+which involve the integer $n$ as a variable 
+are usually proved by a method called \hDefined{induction}. 
+These theorems are very often expressed 
+by the use of some notations which we define below.
+
+Let $a_{m}, \cdots, a_{i}, \cdots,  a_{n}$ be any numbers 
+with $a_{i}$ as the general term 
+where the integer ``$i$''  is called the 
+\hDefined{index variable} or simply the 
+\hDefined{index}. 
+($m \leq i \leq n$)
+
+The sum $a_{m} + \cdots + a_{i} + \cdots + a_{n}$ 
+where $i$ runs from $m$ up to $n$ is denoted by 
+the use of capital Greek letter $\Sigma$ (sigma) as
+\[
+	\sum_{i = m}^{n}  a_{i} 
+	= a_{m} + \cdots + a_{n} 
+	\quad 
+	\text{ (summation of $a_{i}$ from $m$ to $n$) },
+\] 
+\hDefinedN{$\Sigma$} being called the 
+\hDefined{summation notation} 
+and 
+the product $a_{1} \cdots a_{i} \cdots a_{n}$ is represented 
+by the use capital letter $\Pi$ (pi) as
+\[
+	\prod_{i = m}^{n} a_{i} 
+	= a_{m} \cdots a_{n}  
+	\quad
+	\text{ (product of $ a_{i} $ from $m$ to $n$) },
+\]
+\hDefinedN{$\Pi$} being called the 
+\hDefined{product notation}.
+
+\begin{exmp} \
+	\begin{hEnumerateArabic}
+	
+		\item
+		\begin{align*}
+			\sum_{i = 3}^{i = 6} (2i^{2} + 5) 
+			&=(2 \cdot 3^{2} + 5) 
+			+ (2 \cdot 4^{2} + 5) 
+			+ (2 \cdot 5^{2} + 5) 
+			+ (2 \cdot 6^{2} + 5)\\
+			&= 2(3^{2} + 4^{2} + 5^{2} + 6^{2}) + 4 \cdot 5 \\ 
+			&= 2 \cdot 86 + 20 = 192.
+		\end{align*}
+	
+		\item
+		\begin{align*} 
+			\prod_{i = 2}^{4} (2 i^{2} + 5) 
+			&= (2 \cdot 2^{2} + 5)
+		  	(2 \cdot 3^{2} + 5)
+		  	(2 \cdot 4^{2} + 5)\\
+			&=13 \cdot 23 \cdot 37.
+		\end{align*}							   
+	
+		\item  
+		\[
+			\prod_{i = 1}^{n} 
+			= 1 \cdots n.
+		\]
+	\end{hEnumerateArabic}
+\end{exmp}
+%: b1p1/030 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/030}
+% ++++++++++++++++++++++++++++++++++++++
+
+The last example gives the product of all positive integers 
+from $1$ up to $n$. 
+This particular product is abbreviated by 
+the use of notation ``$!$'' called the 
+\hDefined{factorial notation}:
+\[
+	1 \cdots m = m! 
+	\quad
+	\text{(read: $m$ factorial, or factorial $m$)}
+\]
+
+Defining in addition $0!$ as $1$ we have
+\[
+	0! = 1, \quad 
+	1! = 1, \quad
+	2! = 1 \cdot 2, \quad
+	3! = 1 \cdot 2 \cdot 3
+\]
+\[
+	4! = 1 \cdot 2 \cdot 3 \cdot 4,  
+	5! = 1 \cdot 2 \cdot 3 \cdot 4 \cdot 5 = 4!.5
+\]
+\[
+	(n + 1)! = 1 \cdots n \cdot (n + 1) 
+	= n! \cdot (n + 1)
+\]
+
+Another symbol is ``$\mid$'' 
+which is put between two integers or between two polynomials 
+to mean that the left quantity divides the right one:
+
+\[
+	5 \mid 25, \quad
+	9 \mid 27, \quad
+	-7 \mid 91, \quad
+	x-2 \mid x^{2} - 4^{2}.
+\]
+Some statements to be proved by induction are the following:
+\begin{align*}
+	p(n):  
+		&\sum_{i=1}^{n} i^{2} 
+		=\frac{ n(n + 1)(2n + 1)}{6}
+		\text{ for all }
+		n \in \hSoN\\
+	q(n):
+		&n! > 2^{n} 
+		\text{ for all }
+		n \in \hSoN\\
+	r(n):
+		&x - y \mid x^{n} - y^{n}
+		\text{ for all }
+		n \in \hSoN_{1}
+\end{align*}
+where the sets 
+$\hSoN_{1}$, 
+$\hSoN_{4}$ or in general 
+$\hSoN_{m}$ means
+\[
+	\hSoN_{m} 
+	= \{ m, m + 1, m + 2, \cdots \}
+\]
+which consists of all successive integers, 
+smallest of which is the integer $m \in \hSoN$.
+
+%: b1p1/031 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/031}
+% ++++++++++++++++++++++++++++++++++++++
+
+The proof of a theorem
+\[
+	``p(n), 
+	\text{ for all } 
+	n \in \hSoZ_{m} = \{ m, m + 1, m + 2, \cdots \}''; 
+	\quad
+	m \in \hSoZ
+\]
+by induction is done in four steps:
+\begin{enumerate}
+
+	\item 
+	Verifying the truth of $p(m)$, 
+	or verifying $p(n)$ for the first integer $m$ in $\hSoZ_{m}$,
+
+	\item 
+	Assuming the truth of $p(k)$ for a number $k \in \hSoZ_{m}$
+
+	\item 
+	Proving $p(k+1)$ using (2)
+
+	\item 
+	Arguing as follows:\\
+	$p(m)$ is true by (1).
+	Since $p(m)$ is true, 
+	then $p(m+1)$ must be true by (3).
+	Since $p(m+1)$ is true, 
+	then $p(m+2)$ must be true again by (3).
+	Continuing this way $p(n)$ must be true for all $n \in \hSoZ_{m}$
+\end{enumerate}
+
+\begin{exmp} 
+	Prove by induction:
+	\[
+		p(n): 
+		\sum_{i = 1}^{n} i^{2}
+		= \frac{n(n+1)(2n+1)}{6} 
+		\text{ for }
+		n \in \hSoZ_{1}
+	\]
+\end{exmp}
+\begin{proof}
+	Here $\hSoZ_{m}$ is $\hSoZ_{1}$, 
+	since $1$ is the least value taken by $n$.
+ 
+\end{proof}
+
+\begin{equation*} 
+p(n):\sum^n_{(i=1)} i^2=\frac{1(1+1)(2+1)}{6} \iff 1=1 (\text{ true})  \\
+\end{equation*}
+
+(In case p(m) is false the statement is disproved and hence\\
+there is no need to go further.)\\
+
+2)Suppose $p(k)$ is true for some $k$ $\in$ $Z_1$, that is suppose\\
+
+\begin{equation*}
+\sum^k_{i=1} i^2=\frac{k(k+1)(2k+1)}{6}
+\end{equation*}
+
+%: b1p1/032 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/032}
+% ++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+% ++++++++++++++++++++++++++++++++++++++
+%: corrections
+CORRECTION UP TO HERE
+% ++++++++++++++++++++++++++++++++++++++
+% ++++++++++++++++++++++++++++++++++++++
+
+
+  \begin{enumerate}
+    \item[3)] We need to prove
+    \[
+    p(k+1): \qquad \sum_{i=1}^{k+1} i^2 = \frac{(k+1)(k+2)(2k+3)}{6}
+    \]
+    under the hypothesis (2). Indeed,
+    \begin{eqnarray*}
+      \sum_{i=1}^{k+1} i^2 & = & \left[ \sum_{i=1}^{k} i^2 \right] + (k+1)^2 \\
+      & = & \frac{k(k+1)(2k+1)}{6} + (k+1)^2 \qquad (\mbox{by (2)})\\
+      & = & (k+1) \left[ \frac{k(2k+1)}{6} + k + 1 \right]\\
+      & = & (k+1) \frac{k(2k+1)+6(k+1)}{6}\\
+      & = & (k+1) \frac{2k^2 + 7k + 6}{6}\\
+      & = & \frac{(k+1)(k+2)(2k+3)}{6}
+    \end{eqnarray*}
+    which is $p(k+1)$.
+    \item[4)] Then $p(n)$ is true for all $n \in \mathbb{Z}_1$
+  \end{enumerate}
+  
+
+  \begin{exmp}
+    Prove $n!>2^n$ for all $n \in \mathbb{Z}_4$
+  \end{exmp}
+  \begin{proof}
+    \begin{enumerate}
+      \item[1)] For $m=4$, $4!>2^4$ \qquad (true).
+      \item[2)] Suppose $k!>2^k$ is true for $k \in \mathbb{Z}_k$.
+      \item[3)] To prove $(k+1)!>2^{k+1}$, having
+      \[
+      (k+1)!=k!(k+1)>2^k (k+1) \qquad (\mbox{by (2)})
+      \]
+    \end{enumerate}
+it will suffice to show
+\[
+	2^k (k+1) > 2^{(k+1)}
+\]
+or $ k+1>2 $ which is true since k $\in \hSoZ_{4}$.
+
+4) $a! > 2^n$ is true for all n $\in \hSoZ_{4}$.
+  \end{proof}
+\begin{exmp}
+Prove  $ x-y|x^n-y^n $, for all n $\in \hSoZ_{1}$.
+\begin{proof}
+\begin{hEnumerateRoman}
+\item For n=1, $ x-y|x-y $ (true)
+\item Suppose $x-y|x^k-y^k$ for some k $\in \hSoZ_{1}$.
+
+We have supposed divisibility of $x^k-y^k$ by x-y, that is, the existence
+of a polynomial B(x,y) such that
+\[
+	x^k - y^k = B(x,y).(x-y)
+\]
+\item We prove $x-y|x^{k+1}-y^{k+1}$ using (ii).
+
+To use (ii) we express $x^{k+1}-y^{k+1}$ in terms of $x^k-y^k$:
+\begin{align}
+x^{k+1}-y^{k+1} &= x^{k+1} - x^ky + x^ky - y^{k+1}  \\
+&= x^k(x-y) + y(x^k-y^k) \\
+&= x^k(x-y) + y.B(x,y)(x-y)       by(2) \\
+&= [x^k + y.B(x,y)] (x-y). \\
+&= C(x,y).(x-y)
+\end{align}
+meaning that
+\[
+	x-y | x^{k+1}-y^{k+1}.
+\]
+%: b1p1/034 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/034}
+% ++++++++++++++++++++++++++++++++++++++
+\item The divisibility holds for all n $\in \hSoZ_{1}$.
+
+\end{hEnumerateRoman}
+\end{proof}
+\end{exmp}
+
+\begin{center}
+EXERCISES (1.3)
+\end{center}
+
+\begin{exercise}
+Evaluate
+
+\begin{table}[ht]
+\begin{tabular}{l l}
+$ a) \sum_{i=2}^6 {i^2} $  & $ b) \prod_{i=2}^4 {i^2}$ \\[2ex]
+$ c) \prod_{j=1}^7 {\dfrac{j}{i}} $ &  $ d) \sum_{i=2}^7 {\dfrac{j^2}{i}} $\\
+\end{tabular}
+\end{table}
+\end{exercise}
+
+\begin{exercise}
+Write the following by the use of $\sum, \prod$ or ! .
+\begin{table}[ht]
+\begin{tabular}{l l l}
+a) $2^2+3^2+4^2+5^2+6^2$  & b) $2^2.3^2.4^2.5^2.6^2$ & c) 3+6+9+12+15 \\[2ex]
+ d) 3 . 6 . 9 . 12 . 15 & e) 5 . 10 . 15 . 20 . 25 . 30 & f) 5+10+15+20+25+30 \\
+\end{tabular}
+\end{table}
+\end{exercise}
+
+\begin{exercise}
+Write the following int the forms (n-1)!n and (n-2)!(n-1)n .
+\begin{table}[ht]
+\begin{tabular}{l l l l}
+a) 2! & b) 10! & c) 32! & d) 50! \\[2ex]
+e) 12! & f) 100! & g) 8! & f) 5! \\
+\end{tabular}
+\end{table}
+\end{exercise}
+
+\begin{exercise}
+The symbol $ \overline{a_n...a_0}$ represents a positive number with n+1 digits (for instance $\overline{1977}$ = 1977). A mathematician proved that the equality
+\[
+	\sum_{k=0}^n {a_k!} = \overline{a_n....a_0}
+\]
+holds only for numbers 1, 145 and 40585. Verify the equality for these numbers.
+\end{exercise}
+
+\begin{exercise}
+Simplify the following
+\begin{table}[ht]
+\begin{tabular}{l l l l}
+a) $ \dfrac{9!}{8!} $  & b) $ \dfrac{10!}{11!} $ & c) $ \dfrac{12!}{14!} $ &
+d) $ \dfrac{27!}{25!} $
+\end{tabular}
+\end{table}
+\end{exercise}
+%: b1p1/036 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/036}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/037 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/037}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/038 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/038}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/039 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/039}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/040 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/040}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/041 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/041}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/042 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/042}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/043 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/043}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/044 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/044}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/045 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/045}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/046 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/046}
+% ++++++++++++++++++++++++++++++++++++++
+
+\begin{tabular}{l c l}
+\underline{Solution}. $ \Arrowvert {7x + 3} \Arrowvert = 5$ &  $\Rightarrow$  & $5 \leqslant 7x + 3 < 6$ \\
+& $\Rightarrow$ & $2 \leqslant 7x < 3$ \; $\Rightarrow $ \; 2/7 $\leqslant x < 3/7$ 
+\end{tabular} 
+
+\newcounter{sec}
+\setcounter{sec}{2} 
+
+
+
+
+% -------------------------------------------------------------------
+\section*{%\indent \Alph{sec}. 
+\underline{TYPES OF FUNCTIONS}} 
+
+%\newcounter{subsec}
+%\setcounter{subsec}{1} \
+
+
+
+
+% -------------------------------------------------------------------
+\subsection*{%\indent \alph{subsec}. 
+\underline{Polynomial functions}:} \
+
+A function \\
+
+\begin{center}
+$P: \Re $ \; $\Re$, \; $P(x) = \sum_{k = 0}^{n} a_k x^k = a_n x^n + . . . + a_0$ \; $( a_i \in \Re )$
+\end{center} \
+is called a \underline{polynomial function} where the rule \\
+
+\begin{center}
+$a_n x^n + . . . + a_0$ 
+\end{center} 
+for $P$ is a polynomial of \underline{degree} $n$ (if $a_n \neq 0$). The only polynomial without degree is the \underline{zero polynomial} where all coefficients are zero.
+
+The polynomials of degree $0$ are constant, and $P: \Re \rightarrow \Re $, $P(x) = c$ is called a \underline{constant function} whose graph is a horizontal line. A polynomial \\
+
+\begin{center}
+$P: \Re \rightarrow \Re$, \;  $P(x) = ax + b$, \; $( a \neq 0 )$
+\end{center}
+of degree $1$ is called a \underline{linear function} of which the particular case \\
+
+\begin{center}
+$I = \Re \rightarrow \Re$, \; $I(x) = x$
+\end{center}
+is called the \underline{identity function} whose graph is the line $y = x$. \\
+
+%\setcounter{subsec}{2}
+
+
+
+
+% -------------------------------------------------------------------
+\subsection*{%\indent \alph{subsec}. 
+\underline{Rational and irrational functions}:} \
+
+A function 
+
+\begin{center}
+$R: \Re \rightarrow \Re$, \; $R(x) = \frac{P(x)}{Q(x)}$
+\end{center}
+%; b1p1/048 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/048}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/049 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/049}
+% ++++++++++++++++++++++++++++++++++++++
+\noindent %carries on from previous page
+of degree $n$ in $y$, defines at most $n$ algebraic functions
+which we call \underline{implicitly} \\
+\underline{defined functions}. % fails to skip a line otherwise
+
+%\begin{exmp} would go here instead of "Example.", if I could use the HBMath package.
+\underline{Example.} The relation $\{(x,y) : x \in \mathbb{R}, x^2 + y^2 = 4\}$,
+where $x^2 + y^2 = 4$ is of second degree in $y$, defines two
+functions whose rules are obtained by solving $x^2 + y^2 = 4$
+for $y$: \\ \\
+
+\begin{figure}[htb]
+\label{fig:fig49}
+\begin{tabular}{c c}
+$y = \sqrt{4 - y^2}$ & $y = -\sqrt{4 - y^2}$ \\
+%TO DO: fix bounding box
+\includegraphics[bb=0 0 415 400, scale=0.3]{images/p049_fig1.png} & \includegraphics[bb=0 0 415 400, scale=0.3]{images/p049_fig2.png} \\
+Graph of the function  $y = \sqrt{4 - y^2}$ & Graph of the function $y = -\sqrt{4 - y^2}$
+\end{tabular}
+\end{figure}
+
+More generally a function defined by a relation $f(x, y) = 0$ is said to be an
+\underline{implicitly defined function.} For instance $xy^2 - (x+1)y + 1 = 0$, 
+$y$ cos $y + x^3 + x = 0$ define some implicitly defined functions. \\
+
+d. \underline{Trigonometric Functions.}
+
+A function which is not algebraic is called a \underline{transcendental function.} 
+As some examples for transcendental functions we will give trigonometric functions
+which we will represent simply by their rules: \\ \\
+
+\begin{tabular}{c c c c}
+\underline{Rules for trig. fn.} & \underline{Domain} & \underline{Range} & \underline{Period = T} \\
+$y =$ sin $x$ & $\mathbb{R}$ & $[-1,1]$ & 2$\pi$ \\
+$y =$ cos $x$ & $\mathbb{R}$ & $[-1,1]$ & 2$\pi$ \\
+$y =$ tan $x$ & $\mathbb{R} - \{x : x = (2k + 1)\frac{\pi}{2}, k \in \mathbb{Z}\}$ & $\mathbb{R}$ & $\pi$ \\
+$y =$ cot $x$ & $\mathbb{R} - \{x : x = k\pi, k \in \mathbb{Z}\}$ & $\mathbb{R}$ & $\pi$ \\
+$y =$ sec $x$ & $D_{tan}$ & $\mathbb{R} - (-1,1)$ & 2$\pi$ \\
+\end{tabular}
+%: b1p1/050 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/050}
+% ++++++++++++++++++++++++++++++++++++++
+
+\begin{tabular}{llll}
+$y = \csc x $ &  $D_{\cot x}$ & $R - (-1, 1)$ & $2\pi$  \\
+\end{tabular}
+\\
+\\
+their graphs are given in an interval of length T: \\
+
+\begin{figure}[h]
+\begin{tabular}{ccc}
+	\includegraphics[bb=0 0 415 400, scale=0.3]{images/p50_fig1.png} 
+	&\includegraphics[bb=0 0 415 400, scale=0.3]{images/p50_fig2.png} 
+	&\includegraphics[bb=0 0 415 400, scale=0.3]{images/p50_fig3.png} \\
+\end{tabular}
+\end{figure}
+
+
+\underline{Identities:} \\
+\begin{gather*} 
+	\cos^2 x + \sin^2 x = 1, \;\; 1 + \tan^2x = \sec^2x, \;\; 1 + \cot^2x = \csc^2x \\
+	\sin(x \pm y) = \sin x \cos y \pm \cos x \sin y \\
+	\cos(x \pm y) = \cos x \cos y \mp \sin x \sin y \\
+	\tan(x \pm y) = \frac{\tan x \pm \tan y}{1 \mp \tan x \tan y}
+\end{gather*}
+\begin{equation*}
+\left. \begin{array}{l}
+\sin 2x = 2 \sin x \cos x \\ \\
+\cos 2x = \cos^2 x - \sin^2 x = 2 \cos^2 x - 1 = 1 - 2 \sin^2 x \\ \\
+\tan 2x = \frac{2 \tan x }{1 - \tan^2 x}
+\end{array} \right\} \text{Double Angle Formulas}
+\end{equation*}
+\\
+\begin{equation*}
+\left. \begin{array}{l}
+\sin^2 \frac{x}{2} = \frac{1 - \cos x}{2} \\ \\
+\cos^2 \frac{x}{2} = \frac{1 + \cos x}{2}
+\end{array} \right\} \text{Half Angle Formulas}
+\end{equation*}
+
+\[ \left. \begin{array}{ll}
+sinx+siny=2sin\frac{x+y}{2}cos\frac{x-y}{2}\\
+
+\\
+sinx-siny=2sin\frac{x-y}{2}cos\frac{x+y}{2}\\
+
+\\
+cosx+cosy=2cos\frac{x+y}{2}cos\frac{x-y}{2}\\
+
+\\
+cosx-cosy=-2sin\frac{x+y}{2}sin\frac{x-y}{2}\\
+\end{array} \right  \}   (Factor form) 
+\] 
+\begin{tabbing}
+\ \ \ \ \ \ \ \ \ \ \
+\=C. \underline{Monotonic increasing (decreasing) functions:}\\
+\\
+\>A function f : D $\rightarrow$ R is said to be an \underline{increasing func}- \\
+\\
+\underline{tion} on an open  interval I which is a subset of the domain D, if\\
+\\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
+$f(x_{2})>f(x_{1})$ or $f(x_{2})-f(x_{1})>0$\\
+\\
+for any \= two numbers $x_{1}$, $x_{2}\epsilon I$ for which $x_{1}<x_{2}$.\\
+\\
+\>The graph of such a function rises as x increases on \\
+\\
+I, and we say that f \underline{increases} on I.\\
+\\
+\>Under the same condition for $x_{1},$ $x_{2}$ if\\
+\\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
+$f(x_{2})<f(x_{1})$ or $f(x_{2})-f(x_{1})<0,$\\
+\\
+than f i\=s called a \underline{decreasing function} on I.\\
+\\
+\>The graph of a decreasing function falls as x increases\\
+\\
+on I, and we say that f \underline{decreases} on I.\\
+\\
+\>\underline{Example}. Show that $y = 4 - x^{2}$ increases on the interval\\
+\\
+$R_{0}^{-}$. and decreases on  $R_{0}^{+}.$\\
+\\
+\>\underline{Solution}. For $x_{1},$ $x_{2}\epsilon D = R$ with $x_{1}<x_{2},$ we have\\
+\\
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
+$f(x_{2})-f(x_{1}) = (4 - x_{2}^{2}) - (4 - x_{1}^{2}) = x_{1}^{2} - x_{2}^{2}$\\
+
+\end{tabbing}
+
+%: b1p1/052 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/052}
+% ++++++++++++++++++++++++++++++++++++++
+\[ \left. \begin{array}{ll}
+=(x_{1}-x_{2})(x_{1}+x_{2})\\
+\end{array} \right \{
+\begin{array}{ll}
+>0   when  x_{1}, x_{2}\epsilon R_{o}^{-}\\
+
+<0 when x_{1}, x_{2}\epsilon R_{o}^{+}
+\end{array} \]
+
+If f is an increasing (or decreasing) function on an  interval $I\subseteq D,$ then f is said to be a \underline{monotonic increasing} (or \underline{monotonic decreasing}) function in the interval I.
+
+
+The function given in the above example, is monotonic increasing in $R_{o}^{-}$ and monotonic decreasing in $R_{o}^{+}$.
+
+
+A monotonic increasing (or decreasing) function f an interval is expressed usually by saying that f is \underline{one-to-} \underline{one} (or simply \underline{1-1}) in I to mean that to distinct numbers $x_{1},x_{2}$ in I correspond distinct images $f(x_{1}), f(x_{2})$.\\
+\\
+
+D. \underline{Inverse of a function}\\
+
+A function
+\begin{equation}
+f:D \rightarrow \mathbb{R}, y=f(x) or f=\{(x,y): x \in D, y=f(x)\} 
+\end{equation}
+with D as the domain and R as the range, being a relation from D $\rightarrow$ R, its inverse
+\begin{equation}
+f^{-1} = \{(x,y): x \in R, x=f(y)\}
+\end{equation}
+
+is a relation from R to D.If the relation $f^{-1}$ is function we call $f^{-1}$ the \underline{inverse function} of $f$, and $f$ is said to be an \underline{invertible} on the set D.
+
+Since $f$ is a function it maps an $x$ in D into a image $y$ in R, and since $f^{-1}$ is a function from R to D it maps $y$ backward to the single image $x$ in D. This means that $f$ is an one-to-one function and consequently $f^{-1}$ is one-to-one function.
+ 
+ The graphs of $f$ and $f^{-1}$ are symmetric with respect\\
+
+to the line y=x.( The pairs (x,y) of f and (y,x) of $f^{-1}$ are symmetrical in y=x )\\
+
+$\underline{Example}$.  Show that f:R$\rightarrow$ R,y=2x-1 is invertible on R. and find its inverse g.
+
+       \begin{center}
+        f=\{(x,y): x$\epsilon$R, y=2x-1 \}\\
+
+        $f^{-1}$ =\{(x,y): x$\epsilon$R , x=2y-1 \}\\
+
+         =\{(x,y): x$\epsilon R$, y= $\frac{x+1}{2}$ \}\\
+
+         g:R$\rightarrow$R, g(x)=$\frac{x+1}{2}$\\
+       \end{center}
+
+
+\underline{Corollary.If f:  $D\rightarrow R$ , y=f(x) is monotone increasing (or decreasing ) on} \\
+\underline{a interval $I \subseteq D$,then f is invertible on that interval I.}
+
+\begin{minipage}[t]{0.6\textwidth}
+\vspace{0pt}
+    $\underline{Proof}$ . It will suffice to give the proof for the case where f is monotone increasing on I.\\
+
+    Since f is monotone  increasing it maps distinct numbers in I to distinct numbers in R.\\
+
+    If the relation $f^{-1}$ is not a function then some distinct numbers y1,y2 $\epsilon$ R are mapped to the same number x in D,
+    contradicting that f is monotone on I.\\
+\end{minipage}
+\hfill
+\begin{figure}[htb]
+\begin{minipage}[t]{0.8\textwidth}
+\centering\vspace{0pt}
+
+%\includegraphics[width=5cm]{1-1-053-054-1.png}
+\caption{Missing Figure: Pg. 53}
+\end{minipage}
+
+\end{figure}
+
+    Let f:R$\rightarrow$R be a function with a domain $D\subseteq R$. If I in a subset of D, then f:$I\rightarrow J$ is said to be a
+    \underline{ restricted  function } in the restricted domain I.\\
+
+    If there are some intervals on which a function f satisfies required conditions, then  f is  said to be restricted on each
+    interval or a subset of it, and the interval itself is the largest.\\
+
+%: b1p1/054 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/054}
+% ++++++++++++++++++++++++++++++++++++++
+
+    $\underline{Example}$.Find a restriction on the domain D of the function given by the rule y= $\mid x-1 \mid -2 \mid x \mid + x$
+    to be
+
+     a) a constant function,
+
+     b) an inveritble  function.
+
+    $\underline{Solution}$. The given function is the piecewisely defined function:
+
+
+\begin{center}
+   $$
+\mbox{y}=\left\{
+\begin{array}{rl}
+1 + 2x & \mbox{if $x \epsilon (-\infty,0)$} \\
+1 - 2x & \mbox{if $x \epsilon (0,1]$} \\
+-1 & \mbox{if x (1,$\infty$).}
+\end{array} \right.
+$$
+\end{center}
+
+
+    a) A domain of restriction is (1,$\infty$).
+
+    b) A domain of restriction is (-$\infty$,0] on which the function is increasing or (0,1] on which it is decreasing.
+
+    E.\underline{Operation with functions}:
+
+    Let
+
+    \begin{center}
+    f:$I\rightarrow R$, y=f(x)
+    \end{center}
+
+
+be a function with domain I.If c$\epsilon$R, then the function
+
+    \begin{center}
+    cf: $I \rightarrow R$, y=(cf)(x)=cf(x)   (0)
+    \end{center}
+
+
+is called a \underline{scalar multiple} of f.
+
+    Let now be given two functions
+
+\begin{center}
+
+    f:$I\rightarrow R$, y=f(x)
+
+    g:$J\rightarrow R$, Y=g(x)
+\end{center}
+
+with non disjoint domain I and J, then f+ g,f-g, fg ,
+
+
+f/g called the $\underline{sum}$, $\underline{difference}$ , $\underline{product}$  and  $\underline{ratio}$  of f and g, are defined as follows:\\
+
+\hspace{10mm} $\underline{Domain}$\\
+f+g: $I\cap J$, y=(f+g)(x) = f(x)+g(x)   $\hspace{3mm}$ (1)\\
+f-g: $I\cap I$, y=(f-g)(x) = f(x)-g(x)   $\hspace{3mm}$ (2)\\
+f*g: $I\cap J$, y=(fg)(x) = f(x)g(x)   $\hspace{3mm}$ (3)\\
+f/g: $D$, y=(f/g)(x) = f(x)/g(x)   $\hspace{3mm}$ (4) $\hspace{3mm}$
+where D = $(I\cap J) - {x: g(x)= 0}$.\\
+Another function is gof, called $\underline{composite function}$ which is defined as \\
+gof:D, v=(gof)(x) = g(f(x))\\
+where the domain D is the largest possible subset of $\Re$ on which g(f(x)), f(x) and g(x) are defined.\\
+Because of the rule g(f(x)) we call also a $\underline{function of function}$ or a $\underline{chain function}$.\\
+$\underline{Example}$. let f(x)= $\frac{|x|}{x}$ and g(x) = x$\sqrt{(1-x)}$ be two functions. We have\\
+D$_{f}$ = $R^*$ = R ${0}$,  D$_{g}$ $=(-\infty, 1]$\\
+and\\
+0) $ 3f(x) =3f(x) =  3\frac{|x|}{x} $\\ \vspace{4 mm}
+1) $  (f+g)(x) = f(x)+g(x)  = \frac{|x|}{x} + x\sqrt{(1-x)} $\\ \vspace{4 mm}
+2). $ (f-g)(x) = f(x)-g(x) = \frac{|x|}{x} - x\sqrt{(1-x)} $\\ \vspace{4 mm}
+3). $ (fg)(x) = f(x)g(x) = \frac{|x|}{x} x\sqrt{(1-x)} = |x|\sqrt{(1-x)} $\\ 
+%: b1p1/056 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/056}
+% ++++++++++++++++++++++++++++++++++++++
+where cancelation by x is permissible under x$/neq$ and this condition is jointly written with the rule.
+%\newpage
+%\begin{center}
+%     \Large{\textbf{55}} \\
+%\vspace{10 mm}
+%\end{center}
+4) $ (\frac{f}{g})(x) = \frac{f(x)}{g(x)}) = \frac{|x|}{x^2\sqrt{(1-x)} } $\\
+As to compositions gof and fog we have\\
+\vspace{4 mm}
+5) $ (gof)(x) = f(g(x)) = g(\frac{|x|}{x}) =\frac{|x|}{x} \sqrt{1-\frac{|x|}{x}}$\\
+$fog(x) = f(g(x))= f(x\sqrt {(1-x)}) = \frac {|x\sqrt{ (1-x)| }} {x\sqrt {(1-x)}} = \frac {|x|\sqrt {(1-x)}} {x\sqrt {(1-x)}}$\\
+\begin{center}
+    $ = \frac {|x|}{x}$ \hspace{3mm} ($x\neq 1$)\\
+\end{center}
+and\\
+D$_{gof}$=$(-\infty , 1 ] - {0}$ , D$_{fog}$ = $(-\infty , 1 ] - {0,1}$  = $(-\infty , 1 ) - {0}$ = $(-\infty , 1 )^*$\\
+$\underline{Example}$. Given the functions \\
+f:$\Re \rightarrow \Re $ \hspace{2mm} f(x)= $\frac{x}{x-2}$ ; g:$\Re \rightarrow \Re $ , g(x)= $x^2-x$\\
+find the rules for composite functions gof fog, and then determine their domains.
+$\underline{Solution}$. 
+1.$(gof)(x) = g(f(x)) = f^2(x)- f(x) = \frac{x^2}{(x-2)^2}- \frac{x}{x-2} =\frac{ x^2 - x(x-2)}{(x-2)^2}  = \frac {2x} {(x-2)^2}  $\\
+\vspace{2 mm}
+2.$(fog)(x) = f(g(x)) = \frac{g(x)}{g(x)-2} = \frac{x(x-1)}{(x+1)(x-2)}    $\\
+$D_{gof} = \Re - {2} $ , \hspace{4mm} $D_{fog}= \Re -{ -1 ,2 }$\\
+
+\textbf{\underline{Corollary:}} If f is an invertible function, then
+\begin{equation*}
+f^{-1} \circ f  =  f \circ f^{-1}  = I 
+\end{equation*}
+where $ I $ is the identity function under a necessity restriction.\\
+
+\textbf{\underline{Proof:}} Let $f: D \rightarrow  R$  $y = f(x) $
+with $x = f^{-1}(y)$ then 
+\begin{equation*}
+( f^{-1} \circ f)(x) = f^{-1}(f(x)) = f^{-1}(y) = x = I(x)
+\end{equation*}
+$(f^{-1} \circ f)(x) = I(x) $ for all $ x $ implying that $f \circ f^{-1} = I $
+
+Also
+\begin{equation*}
+(f \circ f^{-1}) (y) = f(f^{-1}(y)) = f(x) = y = I(y) \Rightarrow f \circ f^ {-1} = I ~ \Box
+\end{equation*}
+
+\textbf{\underline{Corollary:}} $(h \circ g)\circ f  = h \circ (g \circ f)$
+\\
+\begin{align*}
+For, ((h \circ g)\circ f)(x) &= (h \circ g)(f(x))\\
+&=h(g(f(x))) = h \circ ((g \circ f)(x)) = (h \circ (g \circ f))(x)
+\end{align*}
+\\for all x.~$\Box$
+
+\textbf{\underline{Corollary:}} If $ f$ and $g $ are invertible functions, then 
+\begin{equation*}
+(g \circ f)^{-1} = f^{-1} \circ g^{-1}
+\end{equation*}
+
+\textbf{\underline{Proof:}} We need to show that $(g \circ f)\circ(f^{-1} \circ g^{-1}) = I $
+\\Indeed\\
+\begin{align*}
+(g \circ f) \circ (f^{-1} \circ g^{-1}) &= g \circ(f \circ f^{-1}) \circ g^{-1}\\
+ &= g \circ I \circ g^{-1} = g \circ (I \circ g^{-1}) = g \circ g^{-1} =  I ~ \Box
+\end{align*}
+%: b1p1/058 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/058}
+% ++++++++++++++++++++++++++++++++++++++
+F.\underline{Even and odd functions}\\
+\\
+Let $f:$ be $D \rightarrow \mathbb{R}$ be a function with $x\in D \Rightarrow -x\in D$.Then\\
+f is called\\
+\\
+	1$)$an \underline{even} function if $f(-x)=f(x)$ for all $x\in D$,\\
+	2$)$an \underline{odd} function if $f(-x)=-f(x)$ for all $x\in D$.\\
+\begin{exmp} 
+for $n\in N$\\
+ \\
+	1$)$ $f(x)=x^{2n}$ is an even function.\\
+	2$)$ $f(x)=x^{2n+1}$ is an odd function.\\
+\end{exmp}
+
+Solution.\\
+	1$)$ $f(-x)=(-x)^{2n}=x^{2n}=f(x)$ for all $x\in \mathbb{R} $\\
+	2$)$ $f(-x)=(-x)^{2n}=-x^{2n}=-f(x)$ for all $x\in \mathbb{R} $\\
+\\
+	The reader can show that the function $ f(x)=x^{3}-x^{2} $\\
+is neither even nor odd, and that the zero function $ 0(x)= 0 $\\
+is both even and odd.\\
+	Why the graph of an even (odd) function is sym. w.r.to\\
+y-axis (origin)?\\
+\\
+G.\underline{Periodic Functions}\\
+\\
+A function $f:\mathbb{R}\rightarrow \mathbb{R}$ with domain $\mathbb{R}$ is said to be\\
+\underline{periodic} if there exist a number $T(\neq 0)$ such that\\
+\\
+		$f(x + T)=f(x)$ for all $x\in \mathbb{R} $\\
+\\
+where T is called \underline{a period} of x.\\
+If T is a period, certainly, all integral multiples\\
+of T are also periods.\\
+	The smallest of all positive periods is called the \underline{funda}-\\
+\underline{mental period} or \underline{the least period} or \underline{the period} of f, written\\
+$T_{f}$. As a period of constant function may be taken any real\\
+number.\\
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{\emph{Examples}}
+
+\textbf{1}.sin(x),cos(x)  ($T_{F}=(2\pi ));$
+
+\bigskip 
+
+\textbf{2}.tan(x) , cot(x) ($T_{F}=(\pi ));$
+
+\bigskip 
+
+\textbf{3.}x - [x], $\ \ \ \ \ \ \ \ \ \ \ (\ \ \ T_{F}=1);$
+
+\bigskip 
+
+The graph of a perioadic function is obtained with the repetition of the
+graph of f in the interval of length $T_{F}.$
+
+\bigskip 
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{\emph{Corrolaries}}
+
+\bigskip 
+
+\textbf{1}.f(x +t) = f(x) $\Rightarrow$ f(x +a + t)=f(x + a)
+
+\bigskip 
+
+\textbf{2.} $T_{cf}=T_{f}$ \ (c$\in R)$
+
+\bigskip 
+
+\textbf{3}. If the period of f is $T_{f}$ ,then the period of f(ax + b) is $%
+T_{f}/a$:  Suppose f(ax +b) is periodic with period T' . Then 
+
+\bigskip 
+
+f(a(x +T') + b) = f(ax + b) holds implying
+
+\bigskip 
+
+f(ax + b+ aT') = f(ax + b) $\Rightarrow$ aT'=$T_{f}=>T^{\prime }=T_{f}/a.$
+
+\begin{flushleft}
+\textbf{Example.}Find the periods of cos(3x + 2) and tan ($\frac{x}{5}).$
+
+\bigskip 
+
+\textbf{Answer. }$\frac{2\pi }{5},5\pi $
+
+\bigskip 
+\end{flushleft}
+
+\textbf{4.}If the periods of f , g are $T_{f},T_{g}$ ,respectively,
+
+\bigskip 
+
+then f +g ,f-g, fg ,f/g are periodic and positive
+
+\bigskip 
+
+period T is in interval of length T such that 
+
+\bigskip 
+
+T/$T_{f},T/T_{g}$ are positive integers . \ 
+
+\bigskip 
+
+\begin{flushleft}
+\textbf{Example.} Find a period of cos(x) + cos(3x)
+
+\bigskip 
+
+\textbf{Solution.}Let f(x) =cosx and g(x) = cos 3x. Then we have T$_{f}=2\pi 
+$ \ and T$_{g}=2\pi /3$ implying that T=2$\pi $ since T/T$_{f}=1,$ T/T$%
+_{g}=3.$
+
+\bigskip 
+
+\textbf{Example.}Find a period of 2 sin(x) cos(x).
+
+\bigskip 
+
+\textbf{Solution.}Period of sin(x),cos(x) being 2$\pi ,2\pi ,a$
+\end{flushleft}
+
+
+%: b1p1/060 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/060}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/061 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/061}
+% ++++++++++++++++++++++++++++++++++++++
+
+
+period is $T= 2 \pi$ , but this not the least period, because $2\sin x\cos x = \sin 2x$ has period $2\pi /2=\pi$ .
+\textbf{5.}$gof$ is periodic if f is periodic:
+	
+	$(gof)(x+ T_{f})=g(f(x+ T{f}))=g(f(x))=(gof)(x)$.
+\textbf{\underline{Inverse Trigonometric Functions}}
+Each of the six trigonometric functions has an inverse in an interval in which it is increasing or decreasing. For each one, a fundamental restricted interval is selected. This interval for a particular function will be the fundamental range of the inverse of that function.
+
+\begin{center}
+Trigonometric functions,\\
+their intervals of increase or decrease,\\
+and chosen fundamental intervals 
+\end{center}
+
+\begin{quote}
+\begin{tabular}{l l l}
+f&Intervals of increase or decrease of f & fundamental interval\\
+\hline
+$y= \sin x$&$[(2k-1)\frac{\pi}{2}, (2k+1)\frac{\pi}{2}]$ &$[-\frac{\pi}{2},\frac{\pi}{2}]$\\
+$v= \cos x$&$[k\pi,(k+1)\pi]$&$[0,\pi]$ \\
+$y=\tan x$&$((2k-1)\frac{\pi}{2}, (2k+1)\frac{\pi}{2})$&$(-\frac{\pi}{2},\frac{\pi}{2})$\\
+$y=\cot x$&$(k\pi,(k+1)\pi)$&$(0,\pi)$ \\
+$y=\csc x$&$((2k-1)\frac{\pi}{2}, (2k+1)\frac{\pi}{2})$&$(-\frac{\pi}{2},\frac{\pi}{2})$\\
+$y=\sec x$&$(k\pi,(k+1)\pi)$&$(0,\pi)$ \\
+\end{tabular}
+\end{quote}
+%: b1p1/062 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/062}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/063 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/063}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/064 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/064}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/065 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/065}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/066 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/066}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{tabular}{c c c c}
+a) $x$ & b) $|x|$ & c) $x^2 - 1$ & d) $4 - x^2$ \\
+e) $\cos x$ & f) $\sin x$ &(for $(e)$,$(f)$, $x \in \left[ 0,2\pi \right]$)\\
+\end{tabular}
+
+\begin{enumerate}
+\item Prove
+\begin{enumerate}
+\item[a)] $(f+g)\circ h = f\circ h + g\circ h$
+\item[b)] $(f-g)\circ h = f\circ h - g\circ h$
+\item[c)] $(fg)\circ h = (f\circ h)(g\circ h)$
+\item[d)] $(f/g)\circ h = (f\circ h)/(g\circ h)$
+\end{enumerate}
+\item Write the intervals in which the following functions are monotone(you may use graph):\\
+\begin{tabular}{c c c}
+a) $ y = \frac{1}{x+3} $ & b) $ y = \sin x + \cos x $ &c) $ y = |x^2-4|+4$ \\ 
+\end{tabular}
+\item Find the inverse of the function given in Exercise 74 choosing one proper interval.
+\item Find the inverse of the function
+\begin{displaymath}
+f(x) = \left\{
+\begin{array}{lr}
+3x - 1 $ $ when &  x \leq -1 \\
+\frac{3x}{x+2}$ $  when  & x > -1
+\end{array}
+\right.
+\end{displaymath}
+\item Find the points of intersection, if any, of the given pairs of functions:
+\begin{enumerate}
+\item[a)] $y = \frac{x+2}{x-1}$, $y = \frac{x-2}{x+1}$
+\item[b)] $y = \frac{2x-1}{x+3}$, $y = \frac{3x+1}{2-x}$
+\end{enumerate}
+\item If $f(x) = \sin x$ and $g(x) = x^2 + 2$, then find \\ 
+\begin{tabular}{c c}
+a) $ f(\frac{x}{2} + \pi)g(2x-1)$ & b)$f(3a)g(\sin a)$ \\ 
+\end{tabular}
+\item Find the ranges of the following functions(Hint: Solve for x!) 
+\end{enumerate}
+
+
+\begin{multicols}{2}
+\begin{hItemizeBullet}
+  \item $y = \frac{x^2 - 3x}{x+1}$
+  \item $y = \frac{x^2}{x^2 - 2x -3}$ 
+\end{hItemizeBullet}
+\end{multicols}
+
+
+\begin{hQuestion} {Find the periods of}
+
+\begin{multicols}{3}
+\begin{hEnumerateRoman}
+
+  \item $\cos \hPairingParan{2x + 3}$
+  \item $\sin \hPairingParan{\frac{x}{3} - 2}$
+  \item $\tan \hPairingParan{\frac{x}{2} + \Pi }$
+  \item $\cot \hPairingParan{3x - \Pi }$
+  \item $\cos \hPairingParan{\Pi x - \Pi }$ 
+  \item $\sin \hPairingParan{2 \Pi x - \Pi ^2 }$
+  \item $\sin x \cos x $
+  \item $\tan ^2 x$
+
+\end{hEnumerateRoman}
+\end{multicols}
+\end{hQuestion}
+
+
+\begin{hQuestion} {Examine the following functions for evenness and oddness}
+
+\begin{multicols}{4}
+\begin{hEnumerateRoman}
+
+  \item $\mid x \mid$
+  \item $ 3-x $
+  \item $ x + 2 x ^3 $
+  \item $ x \mid x \mid $
+  \item $ \mid x \mid - x^2 $
+  \item $ -3 $
+  \item $ \sin ^3 2x $
+  \item $ \frac{\sin 2x}{\sin 3x} $
+  
+\end{hEnumerateRoman}
+\end{multicols}
+
+\end{hQuestion}
+
+
+\begin{hQuestion} {Find $f\circ g$ and $g \circ f $} if
+
+\[
+f(x) = \sqrt{x + 1} 
+\]
+\[
+and
+\]
+\[
+ g(x) = \frac{x}{x^2 - 4x +3}
+\]
+
+and determine the domain of each of these composite functions.
+
+\end{hQuestion}
+
+
+\begin{hQuestion} {Express the area of }
+
+\begin{figure}[h]
+\center
+\includegraphics[scale=.5, bb = 0 0 450 330]{images/p067_fig1.png}
+\caption{ AOB Triangle and ACOD Rectangle}
+\label{fig:p067_fig1}
+ 
+\end{figure}
+
+\begin{hEnumerateRoman}
+
+  \item the triangle AOB in terms of $\Theta$
+  \item the triangle AOB in terms of x
+  \item the rectangle ACOD in terms of $\Theta$
+  \item the rectangle ACOD in terms of x
+
+\end{hEnumerateRoman} 
+
+\end{hQuestion}
+
+
+\begin{hQuestion} {Find the domain of restriction in which the relation}
+
+	$\mid x + y \mid - y + 2  = 0 $ is a function. 
+
+\end{hQuestion}
+
+
+\begin{hQuestion} {Given the relation $9x^2 - 36x +16y^2 +96y+36 =0$ .}
+	Write two functions equivalent to this relation.
+\end{hQuestion}
+%: b1p1/068 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/068}
+% ++++++++++++++++++++++++++++++++++++++
+Answers to even numbered exercises
+
+\begin{flushleft}
+
+
+
+ 56.Only a). 58. Polynomials: F,H; Rational functions: f,g,F,H; Irrational 
+
+function:h,i; Algebraic functions: f,g,h,F,G,H; Trans. functions: i.
+
+60. a) R - \{-1, 1\}, R - \{0, 1/2\}.
+
+ b) [1, 2 ], [0, $\infty$) .
+ 
+ c)R - [2, 4], R - [2 , 16] .
+ 
+62. y = 1/x , y = x .
+
+64. a) [2k$\pi$-$\pi$/2 , 2k$\pi$+$\pi$/2], increasing; [2k$\pi$+$\pi$/2 , 2k$\pi$+3$\pi$/2], decreasing.
+	
+	b)[k$\pi$-$\pi$/2 , k$\pi$+$\pi$/2], increasing.
+	
+	c)[2k$\pi$ , (2k+1)$\pi$] increasing; [(2k+1)$\pi$ , (2k + 2)$\pi$] decreasing. 
+	
+	d)[k$\pi$ , k$\pi$+$\pi$/2] decreasing; [k$\pi$+$\pi$/2 , k$\pi$+$\pi$] increasing.
+	
+66. Missing figure
+
+70. a) y = x + 5  b) y = -1  c) x = 3, not a function.
+
+d)$x = y^2 - 1$, not a function e) y = cos x f) y = arcsin x
+
+72. Missing figure
+
+74.a) (-$\infty$, -3) , (-3, $\infty$ ) b) [3$\pi$/4, 5$\pi$/4] , [5$\pi$/4, 7$\pi$/4]
+
+c) (-$\infty$, -2) , [-2, 0] , [0, 2] , [2, $\infty$).
+
+\end{flushleft}
+%: b1p1/073 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/073}
+% ++++++++++++++++++++++++++++++++++++++
+
+\underline{Left and right limits:}\\
+\indent The limit of a function f at a point $x_0$ under the \\
+conditions\\
+$$x< x_0 \quad , \quad 0<|x-x_0|<\delta  $$ 
+
+is called the \underline{left limit} of f at $x_0$, and the limit of f at \\
+$x_0$ under the conditions\\
+$$x> x_0 \quad , \quad 0<|x-x_0|<\delta  $$ 
+
+is called the \underline{right limit} of f at $x_0$.\\
+\indent \indent The notations for left limit are\\\\
+
+$\lim_{\substack{x\to x_0 \\ x<x_0}}f(x)$, \indent  $\lim_{\substack{x\uparrow x_0}}f(x)$,  \indent $\lim_{\substack{x\nearrow x_0}}f(x)$, \indent $\lim_{\substack{x\to x_0^-}}f(x)$,
+\indent $\lim_{\substack{x\to x_0-}}f(x)$ \\\\
+and those for right one are:\\\\
+$\lim_{\substack{x\to x_0 \\ x>x_0}}f(x)$, \indent  $\lim_{\substack{x\downarrow x_0}}f(x)$,  \indent $\lim_{\substack{x\searrow x_0}}f(x)$, \indent $\lim_{\substack{x\to x_0^+}}f(x)$,
+\indent $\lim_{\substack{x\to x_0+}}f(x)$ \\\\
+
+
+At a given point $x_0$ some functions have both the left and right limit, some others have only one, and still others have none.
+
+If both the left and right limit exist at $x_0$ for a function f, and are equal to each other (=$\ell$), then we say  that f(x) has the limit $\ell$, and one writes
+ \begin{center}
+$\lim_{\substack{x\to x_0}}f(x) = \ell$
+\end{center}
+\indent \indent If f: I $\rightarrow$ R, where I is an interval with end points a
+%: b1p1/078 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/078}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{align}
+&\left \lvert f(x)- \ell \right \rvert < \varepsilon ( \varepsilon < \left \lvert \ell \right \rvert  is \,\, taken )\\
+\Longrightarrow &\left \lvert \left \lvert f(x) \right \rvert - \left \lvert \ell \right \rvert \right \rvert \leq \left \lvert f(x)- \ell \right \rvert < \varepsilon (  From \left \lvert \left \lvert a \right \rvert - \left \lvert b \right \rvert \right \rvert \leq \left \lvert a - b \right \rvert )\\
+\Longrightarrow &\left \lvert \left \lvert f(x) \right \rvert - \left \lvert \ell \right \rvert \right \rvert < \varepsilon\\
+\Longrightarrow &-\varepsilon < \left \lvert f(x) \right \rvert - \left \lvert \ell \right \rvert < \varepsilon \\
+\Longrightarrow &0 <  \left \lvert \ell \right \rvert - \varepsilon < \left \lvert f(x) \right \rvert <  \left \lvert \ell \right \rvert + \varepsilon \indent ...(i)
+\end{align}
+Now for $x \in N(x_{0})$\\
+
+$\left \lvert \dfrac{1}{f(x)} - \dfrac{1}{\ell}  \right \rvert = \dfrac{\left \lvert f(x) - \ell \right \rvert}{\left \lvert f(x) \right \rvert \left \lvert \ell \right \rvert} < \dfrac{\varepsilon}{\left \lvert f(x) \right \rvert \left \lvert \ell \right \rvert} < \dfrac{\varepsilon}{(\left \lvert \ell \right \rvert - \varepsilon)\left \lvert \ell \right \rvert} $\\
+
+\indent iv. Since $f$ is invertible we have $y = f(x) \Longleftrightarrow x = f^{-1}(y)$ so that \\ 
+
+$\lim\limits_{x \to x_{0}} f(x) = y_{0} \Longleftrightarrow \lim\limits_{y \to y_{0}} f^{-1}(y) = x_{0} \Longleftrightarrow \lim\limits_{x \to y_{0}} f^{-1}(x) = x_{0}$   $\blacksquare$\\ 
+
+\begin{thm}
+ If the functions $f, g$ have limits at a point $x_{0}$, then \\
+\begin{hEnumerateRoman}
+\item $\lim\limits_{x \to x_{0}} [ f(x) + g(x) ] = \lim\limits_{x \to x_{0}} f(x) +  \lim\limits_{x \to x_{0}} g(x) $ \\
+
+\item $\lim\limits_{x \to x_{0}} [ f(x) - g(x) ] = \lim\limits_{x \to x_{0}} f(x) -  \lim\limits_{x \to x_{0}} g(x) $ \\
+
+\item $\lim\limits_{x \to x_{0}} [ f(x) . g(x) ] = \lim\limits_{x \to x_{0}} f(x) .  \lim\limits_{x \to x_{0}} g(x) $ \\
+
+\item $\lim\limits_{x \to x_{0}} [ f(x) : g(x) ] = \lim\limits_{x \to x_{0}} f(x) :  \lim\limits_{x \to x_{0}} g(x) $ ( if $\lim\limits_{x \to x_{0}} g(x) \neq 0 $)\\
+\end{hEnumerateRoman}
+\end{thm}
+
+\begin{proof}	Let  
+\[ \lim_{x \to x_{0}} f(x)=\alpha,\qquad   \lim_{x \to x_{0}} g(x)=\beta\] 
+Then given $\varepsilon >0$, there exist deleted neighbourhoods $N_{1}, N_{2}$ of $x_{0}$ such that
+ \[ x\epsilon N_{1} \Rightarrow |f(x)-\alpha|<\varepsilon, \qquad x\epsilon N_{2} \Rightarrow |g(x)-\beta|<\varepsilon \] 
+ Taking $N=N_{1}\cap N_{2}$, we have 
+ \[ x\epsilon N \Rightarrow |f(x)-\alpha|<\varepsilon, \quad  |g(x)-\beta|<\varepsilon  \] \\ 
+\begin{enumerate}[label=\alph*) ,leftmargin=*,topsep=-10pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+\item \begin{eqnarray*} x\epsilon N &\Rightarrow& |f(x)+g(x)-(\alpha+\beta)| = |f(x)-\alpha+g(x)-\beta)|\\  &\leq & |f(x)-\alpha|+|g(x)-\beta)|< \varepsilon+\varepsilon=2\varepsilon \end{eqnarray*} 
+Since $\varepsilon(>0)$ is arbitrary, then $f(x)+g(x)\rightarrow \alpha+\beta$ as $x\rightarrow x_{0}$. \\
+\item Similarly proved.\\
+\item \begin{eqnarray*}
+ x\epsilon N &\Rightarrow& |f(x)g(x)-\alpha\beta|  \\
+   &=& |f(x)g(x)-\alpha g(x)+\alpha g(x)-\alpha\beta| \\
+   &=& |(f(x)-\alpha)g(x)+\alpha(g(x)-\beta)| \\
+   &\leq& |(f(x)-\alpha)||g(x)|+|\alpha||(g(x)-\beta)|\\
+   &<& \varepsilon|g(x)|+|\alpha|\varepsilon\\
+   &<& \varepsilon(|\beta|+\varepsilon)+|\alpha|\varepsilon\\
+ x\epsilon N&\Rightarrow&|f(x)g(x)-\alpha\beta|<(|\alpha|+|\beta|+\varepsilon)\varepsilon\rightarrow 0.\\
+\end{eqnarray*}
+\item \begin{equation} \lim_{x \to x_{0}} \frac{f(x)}{g(x)}=\lim_{x \to x_{0}}[f(x).\frac{1}{g(x)}]= \lim_{x \to x_{0}}f(x).\lim_{x \to x_{0}} \frac{1}{g(x)} \end{equation}
+
+\end{enumerate}
+
+\end{proof}
+%: b1p1/080 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/080}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{gather*}
+= \alpha \cdot \frac{1}{\beta} = \frac{\alpha}{\beta} \quad \text {(Theorem 1 c) }
+\end{gather*}
+
+
+\begin{cor}
+Let a composite function $g \circ f$ be given. Then
+
+$\lim\limits_{x\rightarrow x_{0}} f(x)=\alpha $ and $\lim\limits_{x\rightarrow \alpha} g(x) $ exists  $ \Rightarrow   \lim\limits_{x\rightarrow x_{0}} (g \circ f)(x)=g(\alpha) $.
+
+\end{cor}
+
+
+\begin{thm}\quad
+
+\begin{enumerate}[label=\arabic*),leftmargin=*,topsep=-10pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
+\item If $f(x)<g(x)$ holds for all x in a deleted neighbourhood $N(x_{0})$ and if f, g have limits $\alpha$, $\beta$ at $x_{0}$, then $\alpha \leq \beta$.
+\item If $f(x)<u(x)<g(x)$ holds for all x $\in N(x_{0})$ and if f, g have the same limit $\ell$ at $x_{0}$, then 
+\[ \lim_{x\rightarrow x_{0}} u(x) = \ell . \]
+\end{enumerate} 
+\end{thm}
+
+
+\begin{proof}\quad
+
+\begin{enumerate}[label=\arabic*),leftmargin=*,topsep=-10pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+\item 
+\begin{align*}
+g(x)-f(x)>0 & \Rightarrow  \lim\limits_{x\rightarrow x_{0}} [g(x)-f(x)]\geq 0 
+\Rightarrow \lim\limits_{x\rightarrow x_{0}} g(x) - \lim\limits_{x\rightarrow x_{0}} f(x)\geq 0 \\
+&\Rightarrow \beta - \alpha \geq 0 
+\Rightarrow \alpha \leq \beta 
+\end{align*}
+
+\item Since f, g have limits $\ell$ at $x_{0} \in D_{f} \cap D_{g}$ then there exist $N_{1}(x_{0})$, $N_{2}(x_{0})$ such that
+\[ x \in N_{1}(x_{0}) \Rightarrow |f(x) -\ell| < \mathcal{E} ,\quad x \in N_{2}(x_{0}) \Rightarrow |g(x) -\ell| < \mathcal{E} \]
+implying $\ell-\mathcal{E} < f(x)<\ell+\mathcal{E} $ and $\ell-\mathcal{E} < g(x)<\ell+\mathcal{E} $. Since  $f(x)<u(x)<g(x)$ we have $\ell-\mathcal{E} < u(x)<\ell+\mathcal{E} $ which implies $|u(x) -\ell| < \mathcal{E}$ or that $\lim\limits_{x\rightarrow x_{0}} u(x)=\ell$.
+
+\end{enumerate} 
+\end{proof}
+
+
+
+
+% -------------------------------------------------------------------
+\section*{\underline{Corollary 1}}
+
+\begin{equation}
+P(x)=\sum_{k=0}^{n} a_k x^k\Rightarrow\lim_{x \rightarrow x_0}P(x)=P(x_0)
+\end{equation}
+\begin{proof} 
+\begin{align*}
+\lim_{x \rightarrow x_0} P(x)&=\lim_{x \rightarrow x_0}  \sum_{k=0}^{n} a_k x^k\\
+&= \sum_{k=0}^{n}\lim_{x \rightarrow x_0} (a_k x^k)&&\text...{(Theorem\ 2a)} \\
+&= \sum_{k=0}^{n}a_k\lim_{x \rightarrow x_0}x^k&&\text...{(Theorem\ 1b)} \\
+&= \sum_{}^{}a_k(\lim_{x \rightarrow x_0}x)^k&&\text...{(Theorem\ 2c)}\\
+&= \sum_{}^{}a_k x_{0}^k&&\text({x \rightarrow x_0})\\
+&= P(x_0) \\
+\end{align*}
+\end{proof}
+
+
+
+
+% -------------------------------------------------------------------
+\section*{\underline{Corollary 2}}
+
+\begin{equation*}
+\text{If}\ P(x)/Q(x)\text{ \ is \ a \ rational \ function \ with \ }Q(x_0)\neq 0,\ \text{then;} \\
+\end{equation*}
+\begin{equation}
+\lim_{x \rightarrow x_0}\frac{P(x)}{Q(x)}=\frac{P(x_0)}{Q(x_0)}\\
+\end{equation}
+\begin{proof} 
+\begin{align*}
+\lim_{x \rightarrow x_0}\frac{P(x)}{Q(x)}&=\frac{\lim_{x \rightarrow x_0}P(x)}{\lim_{x \rightarrow x_0}Q(x)}\quad &&\text{(Theorem\ 2d)}\\
+&=\frac{P(x_0)}{Q(x_0)}\quad &&\text{(Coroll.1)}
+\end{align*}
+\end{proof}
+%: b1p1/082 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/082}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/083 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/083}
+% ++++++++++++++++++++++++++++++++++++++
+
+
+
+
+% -------------------------------------------------------------------
+\subsection{Indeterminate forms}
+
+If $\lim f(x) = 0$, $\lim g(x) = 0$ when $x \rightarrow x_0$ or $ x \rightarrow \infty$, the use of property
+\[
+\lim \dfrac{f(x)}{g(x)} = \dfrac{\lim f(x)}{\lim g(x)}
+\]
+does not help in getting the limit of $ f(x) / g(x) $, since the form $ 0 / 0 $ is not defined
+ and may be taken as equal to any number k. Indeed, the equality $0 / 0 = k$ is equivalent to $0 = 0\cdot k$ and the latter holds true for any $k \in \mathbb{R}$. For this reason $0 / 0$ is called an \hDefined{indeterminate form}. The indeterminate forms that we encounter in this chapter are
+ \[
+ \dfrac{0}{0},\quad \dfrac{\infty}{\infty},\quad \infty \cdot 0,\quad \infty - \infty
+ \]
+ 
+ There are also three other which arise in considering limit of a function of the form $ f(x)^{g(x)} $, and are $0^{0}$, $1^{\infty}, \infty^{0}$. These indeterminate forms will be taken up in a later chapter where, by the use logarithms, they will be reduced to above mentioned indeterminate forms.
+ \subsubsection{The indeterminate form $0 / 0$:}
+ A remarkable example is the following
+ \[
+ \lim_{\Theta\to\infty} \dfrac{\sin \Theta }{\Theta} = \left[ \dfrac{0}{0}\right] 
+ \]
+ which we state as a theorem:
+ \newtheorem{theorem}{Theorem}
+ \begin{thm}
+ If $\Theta$ is measured in radian, then
+ \[
+ \lim_{\Theta\to\infty} \dfrac{\sin \Theta }{\Theta} = 1\quad or\quad \lim_{\Theta\to\infty} \dfrac{\Theta }{\sin \Theta} = 1
+ \]
+ \end{thm}
+%: b1p1/084 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/084}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/085 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/085}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/086 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/086}
+% ++++++++++++++++++++++++++++++++++++++
+%: b1p1/087 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/087}
+% ++++++++++++++++++++++++++++++++++++++
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item $
+f(n) = \begin{cases} 1 &\mbox{when } x = -1$, $x_{0} = -1 \\
+x & \mbox{when} x \geq 0 \end{cases} 
+ $
+\item  $ h(x) = \dfrac{x - 2}{x - 2}$, $ x_0 = 2 $
+\item $ \dfrac{1}{x - 1} $, $ x_0 = 1 $
+\end{enumerate}
+
+\begin{tabular}{ l r }
+
+\end{tabular}
+
+\textbf{Solution}
+
+\begin{enumerate}
+\item $ f $ is not defined at $ x_0 = 0 $ (finite jump) 
+\begin{figure}[h]
+\includegraphics[keepaspectratio=true, scale=0.15]{images/p095_fig1}
+\caption{       }
+\label{fig:p095_fig1}
+\end{figure} 
+\item $ x = -1 $ is an isolated point of $ g $.
+\begin{figure}[h]
+\includegraphics[keepaspectratio, scale=0.15]{images/p095_fig2}
+\caption{       }
+\label{fig:p095_fig2}
+\end{figure} 
+
+\item $ h $ is undefined at $ x_0 = 2 $. $ h $ having limit (=1)  at  $ x_0=2 $ the discontinuity is removable.
+\begin{figure}[h]
+\includegraphics[keepaspectratio, scale=0.15]{images/p095_fig3}
+\caption{       }
+\label{fig:p095_fig3}
+\end{figure} 
+
+
+\item $ k $ is undefined at $ x_0 = 1 $ (infinite jump) 
+\begin{figure}
+\includegraphics[keepaspectratio, scale=0.15]{images/p095_fig4}
+\caption{}
+\label{fig:p095_fig4}
+\end{figure} 
+\end{enumerate}
+
+\begin{exmp}
+Test the function $  f(x) = |x|  $ for continuity at the origin. 
+\end{exmp} 
+
+\textbf{Solution} Since $ \underset{x \rightarrow 0}{limit} |x| = 0 $ and this limit is equal to $ f(0), f $ is continuous at 0.
+
+\begin{figure}
+\includegraphics[keepaspectratio, scale=0.15]{images/p095_fig5}
+\caption{}
+\label{fig:p095_fig5}
+\end{figure} 
+
+
+\begin{exmp}
+Test the function $ f(x) = [ 3x + 1 ] $ at  $ x_0 = \dfrac{1}{2} $
+\end{exmp}
+
+\textbf{Solution}
+$ \underset{x \rightarrow \dfrac{1}{2}}{lim}  f(x) = 2 = f(\dfrac{1}{2})  $ \\
+It is continuous.
+\begin{figure}[h]
+\includegraphics[keepaspectratio, scale=0.15]{images/p095_fig6}
+\caption{       }
+\label{fig:p095_fig6}
+\end{figure} 
+%: b1p1/098 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/098}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{enumerate}
+\item[a)] 
+Since f is increasing in [1,4], we have 
+ \\* m=f(1) = 1/4 , M = f(4) = 4/7.  $\mu$= $\frac{1}{2}$ $\in$ [$\frac{1}{4}$,$\frac{4}{7}$]
+\\* Then $\frac{x}{x+3}$ = $\frac{1}{2}$ $\implies$  c = 3 $\in$ [1 , 4]
+
+\item[b)] 
+Since g is increasing in [2 , 5] , we have
+\\* m=f(2) , M=f(5) = 23, $\nu$ = 14 $\in$ [2,23]. Then
+\\*$ x^2$ - 2 = 14 $\implies$ x = $\pm$ 4 , and c = 4 $\in$ [2 , 5]
+\item[c)]
+\includegraphics[bb=0 0 415 400, scale=0.3]{images/p98_fig1.png}
+\\*From the graph
+\\* m = f(-2) = f(2) = 0 ,
+\\* M = f(3) = 5 .
+\\*$\nu$ = $\frac{9}{4}$ $\in$ [0 , 5].   Then
+\\*
+\\* \[
+|x^2-4| \leq \frac{9}{4} \implies x^2 - 4 = \pm \frac{9}{4}  \implies x^2 = \frac{16 \pm 9}{4}\implies
+\]
+\[
+\\* x_{1,2} = \pm \frac{5}{2} , x_{3,4} = \pm \frac{7}{2}  \implies
+\]
+\[ c_{1} = - 5/2 , \quad  c_{2} = -\sqrt{7}/2 , \quad   c_{3} = \sqrt{7}/2 , \quad    c_{4} = 5/2 \in [-5/2 , 3] .
+\]
+\item[d)] 
+Since k is defined on an open interval there will be no smallest and no largest values,
+\quad \[    but \quad  \frac{1}{25} < k(x) < 1 . 
+\]
+\\*
+\[ \mu \in (1/25 , 1) then \quad 1/x^2 = 4/9 \implies x= \pm 3/2 \implies c=3/2 \in (1,5).
+\] 
+
+\end{enumerate} 
+
+\underline{Corollery: } If f $\in c[a,b]$  and $f(a) f(b)< 0 $ , then there exists at least one $ c \in [a, b]$ such that $f(c) = 0$ , 
+in other words the equation $ f(x) = 0$ has at least one root between a  and b .
+\\*\includegraphics[bb=0 0 415 400, scale=0.3]{images/p98_fig2.png}
+
+
+ To find an approximate root of an equation $f(x) = 0$, in the first step, one determines an interval $ [a, b]$ on which f is continuous and 
+$f(a) f(b)<0$ and the
+
+%: b1p1/102 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/102}
+% ++++++++++++++++++++++++++++++++++++++
+\textbf{113.} Show that the following functions are continuous for all $x \in R$ :\\\\
+\begin{tabular}{ll}
+$a)  f_{(x)} = \left\{ 
+\begin{array}{ll}
+x^2, & x<-1 \\
+1, & x=-1 \\
+x+2, & x>-1
+\end{array} 
+\right.
+$
+& $b)  g_{(x)} = \sqrt{\frac{x^2 + 2x + 3}{x^2 + x + 1}}$
+\end{tabular}
+\\\\\\
+\textbf{114.} Show that the following functions are continuous at all x in their domain of definition:\\
+
+
+\begin{tabular}{ll}
+$a)  f_{(x)} = |x^2-2| \frac{x}{x} $
+& $b)  g_{(x)} = \sqrt{x^2 -5x +4}$\\\\
+
+$c)  h_{(x)} = \sqrt[3]{x+5} $
+& $d)  h_{(x)} = \sqrt[4]{x^2+2}$
+\end{tabular}
+\\\\\\
+\textbf{115.} Find the points of discontinuity and identify their types of the following functions, if any:\\
+
+\begin{tabular}{ll}
+$a)  f_{(x)} = \frac{x^2+3x-10}{x-2}$
+& 
+$b)  g_{(x)} = \left\{ 
+\begin{array}{ll}
+x^2 +3, & x<-2 \\
+5-x, & x>-2
+\end{array} 
+\right.$\\\\\\
+
+$c)  F_{(x)} = \left\{ 
+\begin{array}{ll}
+x+4, & x<2\\
+7, & x=2 \\
+2x+2, & x>2
+\end{array} 
+\right.$
+&
+$d) G_{(x)}=[x]-x $
+\end{tabular}
+\\\\\\
+\textbf{116.} Same question for:\\
+
+\begin{tabular}{ll}
+$a)  f_{(x)} = \left\{ 
+\begin{array}{ll}
+x, & x<0\\
+1, & x=0 \\
+\frac{1}{1-x}, & x>0
+\end{array} 
+\right.$
+&
+$b) g_{(x)}=\frac{x}{sin x}$\\\\\\
+
+$c) F_{(x)}=x cot x$
+&
+$d) G_{(x)}=\frac{tan x}{arctan x}$
+\end{tabular}
+\\\\\\
+\textbf{117.} Find the points and type if discontinuity of the following functions in the indicated intervals, if any:\\
+%: b1p1/103 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/103}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{enumerate}
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\item f(x) = $\dfrac{x^2+3}{|x-2|-1}$ , $\> [0,2]$
+
+\item g(x)= $\dfrac{x}{[2x]-x}$ , [0,5]
+
+\item h(x) = $\dfrac{sinx+cosx}{sinx-cosx}$ , $[0,\pi/2]$
+
+\item k(x) = $\dfrac{sinx}{arcsinx}$ , $[0,\pi/2]$\\
+
+\end {enumerate}
+
+\noindent 118. Find the points of discontinuity  and identify their types of the following domain, if any;
+
+\begin{enumerate}
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\item F(x) = $[sinx]$
+
+\item A function defined by
+
+\begin{equation*}
+x^3y^2-2x^2y-xy^2+8xy+5x-y+3=0
+\end{equation*}
+
+\item GoG if $G(x)= [x^2+1] $
+
+\item $H^{-1}$  if$ H(x) = \dfrac{1}{x+1}$\\
+
+\end {enumerate}
+
+\noindent 119. Find the points of discontinuity of f + g, fg,
+\\f/g if
+
+\begin{equation*}
+f(x) = 2x - \dfrac{1}{x^2}, g(x)=x^2+\dfrac{1}{x^2}\\
+\end{equation*}
+
+\noindent 120. Find the points of discontinuity of fog and gof 
+\\and determine their types, if any, where
+
+\begin{enumerate}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\item $f(x) = x^2-1, g(x) = sinx$
+\item $f(x) = cosx, g(x) = \dfrac{1}{x^2+1}$\\
+\end{enumerate}
+%: b1p1/104 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/104}
+% ++++++++++++++++++++++++++++++++++++++
+interval if they are continuous; then find x for the given value of f(x): \\
+% TO DO: error
+%\begin{enumerate}
+%\setcounter{enumi}{121}
+%\ 
+%\begin{enumerate}
+%	\item  $y = x^3 - 8,		[1, 2],		f(x) = -2$\\
+%	\item  $y = | x + 3 | + x$,				$[-2, 3],	$		$f(x) = 0$\\
+%	\item	$y = |x^2 + 4x| - 5$,	[-1, 3],	f(x) = 2\\
+%	\item	$y = [	\frac{x}{5} + 1]$,	$[1, 4]$,	f(x) = 1
+%\end{enumerate}
+%\item Same question for\\
+%\begin{enumerate}
+%	\item  $f(x)  = x^2 - \Vert x^3\Vert, [-1, 0],		f(x) = 1$\\
+%	\item  $f(x) = \frac{x}{x+1} $,				$[3, 7],	$		$f(x) = 5/6$\\
+%	\item	$f(x) = - \frac{2-x}{x^3 + 3x}$,	[1, 5],	f(x) = 0\\
+%	\item	$f(x) = \sec x + \csc x, [ \pi/6,\pi/3 ],	f(x) = 0$
+%
+%\end{enumerate}
+%\item Find approximately a root of  f(x) = 0 in [0, 1] and determine the maximum error.
+%\begin{enumerate}
+%	\item  $f(x)  = 2x^2 + x - 1 = 0$\\
+%	\item  $f(x) = 3x^2 + 2x - 1 = 0$\\
+%
+%\end{enumerate}
+%\item Find the root of $x^3 - 5x - 2 = 0$ in (0, 1) approximately with an error less than 10$\%$. (Use both ways)\\
+%\item Find approximate root of $\sin x + \cos x$ in $(0, \pi)$ and give the maximum error.
+%\end{enumerate}
+
+\noindent 121. Find m, M of the following functions in the given
+%: b1p1/109 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/109}
+% ++++++++++++++++++++++++++++++++++++++
+140.Find the interval defined by \\
+
+\begin{hEnumerateAlpha}
+\item $|x-3|\leqslant 2$
+\item $|x+2| $<$ 3$
+\item $|x+7| $<$ 9$
+\item $|x+9| \leqslant 7$
+\end{hEnumerateAlpha}
+
+
+141.Express the given interval as an inequality involving an absolute value:\\
+
+\begin{hEnumerateAlpha}
+\item $(8,8)$
+\item $[5,-7]$
+\item $[-4,7]$
+\item $(-2,5)$
+\end{hEnumerateAlpha}
+
+
+142.Find the set of solution of the following equation:\\
+
+\begin{hEnumerateAlpha}
+\item $|x^2-2x|-x-1=0$
+\item $|x+3|-|2x-1|-x=0$
+\end{hEnumerateAlpha}
+
+
+143.Same question for \\
+
+\begin{hEnumerateAlpha}
+\item $ 2|x+4|-|x-2|+x=0$
+\item $|x-3|-|x+1|+4=0$
+\end{hEnumerateAlpha}
+
+        144.Prove by induction:\\
+
+\begin{hEnumerateAlpha}
+\item $x^n+y^n$ is divisible by $x+y$ for $n\in \mathbb{Z}_1$
+\item $x^n-y^n$ is divisible by $x-y$ for $n\in \mathbb{Z}_1$
+\end{hEnumerateAlpha}
+
+145.Prove by induction:\\
+
+$1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+ - \ldots +\frac{1}{2n-1} -\frac{1}{2n}=\frac{1}{n+1}+\frac{1}{n+2}+ \ldots +\frac{1}{2n},n\in \mathbb{Z}_1$ 
+
+
+146.Prove by induction:\\
+
+$ \left\| \frac{\sin nx}{\sin x} \right\| \leqslant n$ for $n\in \mathbb{Z}_0$ ,$ x \not= k\pi$
+
+
+147.Given the relation $x-|y|=1$ \\
+
+\begin{hEnumerateAlpha}
+\item Sketch it
+\item write its inverse
+\end{hEnumerateAlpha}
+
+
+148.Same question for $|x|+|y|=1$
+
+
+%: b1p1/110 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/110}
+% ++++++++++++++++++++++++++++++++++++++
+149. Find the inverse of the the relation \\
+
+\hspace{1 cm}(x-y)(3y+x)+1=0. \\
+
+150.Which ones of the following relations are symmetric? \\
+
+\hspace{1 cm} a) \{(x,y) : $x^{2}$ + $y^{2}$ $>$ 4\} \hspace{1 cm} b) \{(x,y) : x + y $<$ 2\}   \\
+
+\hspace{1 cm} c)\{(x,y) : x - y $>$ 1\} \hspace{1,6 cm} d) \{(x,y) : xy + 4 = 0 \} \\
+
+\hspace{1 cm} e) \{(x,y) : $\rvert$x - y$\rvert$ $<$ 2\} \hspace{1.2 cm} f) \{(x,y) : x$y^{2}$ - 1 = 0\} \\
+
+151.Sketch the graph of relations: \\
+
+\hspace{1 cm} a) $\rho$ = \{(x,y) : $\rvert$y$\rvert$ - x + 1 $>$ 0\} \\
+
+\hspace{1 cm} b) $\rho$ = \{(x,y) : $\rvert$$\rvert$x$\rvert$ - y$\rvert$ - 3 $<$ 0\} \\
+
+152.Same question for: \\
+
+ \hspace{1 cm} a) \{(x,y) : $\lfloor$x -2$\rfloor$ = 3, $\lfloor$y-3$\rfloor$ = 2 \}   \\ 
+ 
+ \hspace{1 cm} b) \{(x,y) : $\lfloor$x$\rfloor$ + $\lfloor$y$\rfloor$ = 1 \}   \\ 
+ 
+153.Sketch: \\
+
+\hspace{1 cm} a) \{(x,y) : $\rvert$x$\rvert$  + $\rvert$x-1$\rvert$ = 3\} \\
+
+\hspace{1 cm} b) \{(x,y) : $\rvert$y$\rvert$ - $\rvert$y-1$\rvert$ $>$ 3\} \\
+
+\hspace{1 cm} c) \{(x,y) : $\rvert$x$\rvert$ + $\rvert$y-1$\rvert$ $<$ 3\} \\
+
+\hspace{1 cm} d) \{(x,y) : $\rvert$y$\rvert$ - $\rvert$x-1$\rvert$ $>$ 3\} \\
+
+154.Sketch: \\
+
+\hspace{1 cm} a) \{(x,y) :  $\rvert$x$\rvert$ =2\} \hspace{1 cm} b) \{(x,y) :  $\lfloor$x$\rfloor$ =2\} \\
+
+\hspace{1 cm} c) \{(x,y) :  $\rvert$x-3$\rvert$ =2, y=1\}  d) \{(x,y) :  $\lfloor$x-3$\rfloor$ =2, y=1\} \\
+
+155.Sketch: \\
+
+\hspace{1 cm} a) \{(x,y) : $\rvert$2x+3$\rvert$ =5, $\lfloor$y$\rfloor$ =2\}  \\
+
+\hspace{1 cm} b) \{(x,y) : $\lfloor$2x+3$\rfloor$ =5, $\rvert$y$\rvert$ =2\}  \\
+
+\begin{description}
+\item[156.] Sketch the graphs of the relations;
+\end{description}
+
+\textbf{a)} \{$( x,y ):  \lfloor x \rfloor  \lfloor y \rfloor  = 1 \}$
+
+\textbf{b)} \{$( x,y ):  \lfloor x \rfloor  \lfloor y \rfloor  = -1 \}$
+
+\textbf{c)} \{$( x,y ):  \lfloor x \rfloor  \lfloor y \rfloor  = 0 \}$
+
+\textbf{d)} \{$( x,y ):  \lfloor x \rfloor  \lfloor y \rfloor  = 4 \}$
+
+
+%-----------------
+
+\begin{description}
+\item[157.] Prove
+\end{description}
+
+
+\textbf{a)}  $ \lfloor x \rfloor \leq  x  < \lfloor x \rfloor + 1 $ 
+\hspace*{1in} \textbf{b)} $ (a) \Leftrightarrow 0 \le x - \lfloor x \rfloor < 1 $
+
+\textbf{c)} $ \lfloor x \rfloor + \lfloor x \rfloor \le 0 $
+\hspace{92pt} \textbf{d)} $ 0 \le \lfloor x \rfloor-2 \lfloor x/2 \rfloor \le 1 $
+
+\begin{description}
+\item[158.] Given the Figure a window with constant area S. The glass in rectangular 
+form permits the light half of that of semicircular form . Find the amountof light 
+$ l(x)$ passing through the window.(Glass in rectangular form permits amount of light $l_a$ per unit area)
+\end{description}
+
+\begin{picture}(10,5)(10,0)
+\hspace{224pt} \circle{21}2x
+\end{picture}
+
+\vspace{18pt}
+
+\begin{picture}(10,10)(10,0)
+\hspace{3in}\framebox(20,30)[17]{} y
+\end{picture}
+
+
+\begin{description}
+\item[159.] Find the area $A$ of an isocales triangle with 
+equal sides $a$ and angle between them is $x$; then discuss
+the contiunity of $A$ as a function of $x$. Find m and M.
+\end{description}
+
+\begin{description}
+\item[160.] Find the distance function $d(m)$ of the foot of
+the perpendicular from $(4,0)$ to the line $y=mx$.
+Find the domain $D$ and range of this fuctions.
+\end{description}
+
+\begin{description}
+\item[161.] A variable point $P$ on $(x-2)^{2} + y^{2} = 4 $ is given.
+Find the sum of the distance of $P$ form the lines $ y=x$ and $ y=-x$ as a function of $x.$ 
+\end{description}
+
+\begin{description}
+\item[162.] If $f(\sqrt{2}x + 3) = x^{2} + x$ , find $f(x)$.  
+\end{description}
+
+\begin{description}
+\item[163.] If $f(x)=\sqrt{x^{2} +1}$, $g(x) = x/(x^{2} +1)$ , find 
+\end{description}
+
+\textbf{a)} $(fog)(x) $
+\hspace{1in}\textbf{b)} $(gof)(x)$
+
+\textbf{c)} $f^{-1}(x)$ 
+\hspace{80pt}\textbf{d)} $g^{-1})(x)$
+
+%: b1p1/112 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/112}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{enumerate}
+\setcounter {enumi} {163}
+\item If 1/p + 1/q = 1 show that f(x) = $x^{n-1}$ and g(x) = $x^{q-1}$ are inverse functions.
+\item Using the data given in the Figure, compute the time t(x) for a man walking from A to B via C 
+if the speed from A to C is 2km/hr and C to B is 3km/hr.
+\begin{figure} [h]
+\begin{center}
+\includegraphics[bb=0 0 415 400, scale=0.85]{images/p112_fig1.png}
+\label{fig:p112_fig1}
+\caption{}
+
+\end{center}
+\end{figure}
+\item Let $e_{1}(x)$, $e_{2}(x)$ be two even and $o_{1}(x)$, $o_{2}(x)$ be two odd functions.
+What can be said about  evenness or oddness of
+\renewcommand{\theenumi}{\Alph{enumi}}
+\begin{enumerate}
+\item $e_{2}$ o $e_{1}$  \item $e_{1}$ o $o_{1}$ 
+\item $o_{1}$ o $e_{1}$ \item $o_{2}$ o $o_{1}$
+\end{enumerate}
+
+\item If F, G, H are three given invertible functions and f, g, h are unknown functions defined by $f$ o $F$ = $G$,
+$F$ o $g$ = $G$ and $F$ o $h$ o $G$ = $H$ show that
+\begin{enumerate}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\item $f$ =  $G$ o $F^{-1}$ \item $g = F^{-1}$ o $G$
+\item $h = F^{-1}$ o $H$ o $G^{-1}$
+\end{enumerate}
+\item Given f(x) = $\sqrt{x+1}$, g(x) = $tan^{2}x$ and h(x) = $4x^{2}$find the following:
+\begin{enumerate}
+\renewcommand{\theenumi}{\Alph{enumi}}
+\item ($f$ o $g$ o $h$)$(\frac{\sqrt{\varPi}}{4})$ \item ($f$ o $h$ o $g$)$(\frac{\varPi}{3})$
+\item ($g$ o $h$ o $f$)(3) \item ($h$ o $f$ o $g$)$(\frac{\varPi}{6})$
+\end{enumerate}
+\item Prove:
+\begin{gather*}
+csc  \frac{\varPi} {7} - csc \frac{2\varPi}{7} - csc \frac{3\varPi}{7} = 0
+\end{gather*}
+\item Prove:
+\begin{gather*}
+arctan \frac{1}{2} + arctan \frac{1}{5} + arctan \frac{1}{8} = \frac{\varPi}{4}
+\end{gather*}
+\item Evaluate the following
+\end{enumerate}
+%: b1p1/117 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/117}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{enumerate}
+\setcounter{enumi}{157}
+\item $l(x) = \frac{1}{2}(S + \frac{\pi}{2}x^2)l_0$
+\addtocounter{enumi}{1}
+\item $d(m) = 4m/\sqrt{1 + m^2};  D_d = \mathbb{R},  R_d = [0, 4]$.
+\addtocounter{enumi}{1}
+\item $f(x) = (x^4 - 12x^3 + 56x^2 - 120x + 99)/4$.
+\addtocounter{enumi}{1}
+\item 
+\begin{enumerate}
+	\item $\sqrt{2}$
+	\item $\sqrt{37}$
+	\item $tan^2 16$
+	\item $16/3$
+\end{enumerate}
+\addtocounter{enumi}{1}
+\item
+\begin{enumerate}
+	\item $\pi/2$
+	\item $2\pi$
+	\item $3$
+	\item $\pi/3$
+\end{enumerate}
+Hint: Transform first the given expression into linear form such as $3tan2x - sin5x$, and then find the period.
+\addtocounter{enumi}{1}
+\item
+\begin{enumerate}
+	\item $0$
+	\item $0$
+\end{enumerate}
+\addtocounter{enumi}{1}
+\item $5$
+\addtocounter{enumi}{1}
+\item
+\begin{enumerate}
+	\item $7$
+	\item $0$
+	\item No limit
+	\item No limit
+\end{enumerate}
+\addtocounter{enumi}{1}
+\item
+\begin{enumerate}
+	\item $\mathbb{R}$
+	\item $\mathbb{R}$ - $\{x: x = k/2$, $k\in\mathbb{Z}\}$
+	\item Yes
+	\item $x = [2y - 1]$
+\end{enumerate}
+\addtocounter{enumi}{1}
+
+\item 
+$x = -R \cos 2 \alpha$, 
+$y = R \sin 2 \alpha$; 
+$\alpha = 3 \pi / 8$
+\addtocounter{enumi}{1}
+
+\item 
+$A(\alpha) = \frac{1}{2} (- \sin \alpha) \cos \alpha$; 
+$m = 0$, 
+$M = 1/2$
+\end{enumerate}
+%: b1p1/232 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/232}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{hEnumerateArabic}
+	
+	\setcounter{enumi}{207}
+	\item  
+	\begin{hEnumerateAlpha}
+		\begin{multicols}{2}
+			\item 1,
+		\columnbreak
+			\item -1
+		\end{multicols}
+	\end{hEnumerateAlpha}
+	
+	\setcounter{enumi}{209}
+	\item $ r = (r_1 + \ldots + r_n ) / n. $
+\end{hEnumerateArabic}
+
+
+
+
+
+
+% =======================================================
+\end{document}  
+
+%==== templates ====
+
+%==== environments ====
+
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[width=0.9\textwidth]{images/SD-1-1p15A}
+%	\caption{Classification of complex numbers}
+%	\label{fig:classificationOfComplexNumbersA}
+%\end{figure}
+
+%\begin{center}
+%\begin{tabular}{cc}
+%\end{tabular}
+%\end{center}
+
+%\begin{exmp}
+%\begin{hSolution}
+%\end{hSolution}
+%\end{exmp}
+
+%\begin{hEnumerateAlpha}
+%\end{hEnumerateAlpha}
+
+%\begin{hEnumerateRoman}
+%\end{hEnumerateRoman}
+
+%$
+%\begin{bmatrix}
+%\end{bmatrix}
+%$
+
+%\frac{aaaa}{bbb}
+%\frac{a_{n}}{b_{n}}
+%\left( aaaa \right)
+%\Longrightarrow
+
+% ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/xxx}
+% ++++++++++++++++++++++++++++++++++++++
+
+%\begin{multicols}{2}
+%	bb
+%\columnbreak
+%	aa
+%\end{multicols}

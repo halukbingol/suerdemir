@@ -1,0 +1,427 @@
+\documentclass[11pt]{amsbook}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{../HBSuerDemir}	% ------------------------
+
+%\usepackage[update,prepend]{epstopdf}
+
+\usepackage{epstopdf}
+\epstopdfsetup{outdir=./images}
+\epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+
+\setcounter{tocdepth}{3}
+
+\usepackage{fancyhdr} % Header/Footer
+\pagestyle{fancy}
+%\fancyhead{}
+%\fancyhead[CO,CE]{óDraftó}
+\fancyfoot{}
+%\fancyfoot[CO,CE]{Draft}
+%\fancyfoot[RO,LE] {\thepage}
+\fancyfoot[L]{\footnotesize 
+Freshman Calculus by Suer \& Demir  \textbf{DRAFT} \\
+\LaTeX  by Haluk Bingol 
+\href{http://www.cmpe.boun.edu.tr/~bingol}
+{http://www.cmpe.boun.edu.tr/~bingol} 
+%\large 
+%\footnotesize 
+\today}
+\fancyfoot[R]{{\thepage} of \pageref{LastPage}}
+
+
+\begin{document}
+
+
+
+% -------------------------------------------------------------------
+\chapter{XXX}
+\label{chap:FuncLimCont}
+
+
+
+
+% -------------------------------------------------------------------
+\section{XXX}
+\label{sec:Numbers}
+
+%\hPage{b1p2/320}
+%:b1p2/320 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p2/320}
+% ++++++++++++++++++++++++++++++++++++++
+circle (or a center) and gradually receding from or approaching \\
+it.\\ Two examples of spiral are \\ 
+%
+1) $r=a^\theta$ (ARCHİMEDES' Spiral)\\
+%
+2) $a^\theta =\ln r$ or  $r=e^{a \theta}$  (logarithmic  Spiral)(See\quad Chapter \quad6.)
+
+%
+ 1. An ARCHIMEDES' Spiral is the trajectory of a point $P$ 
+ moving uniformly on a line 
+which in turn rotating uniformly about about a point. 
+
+Taking the center 0 of rotation 
+as pole and that line when $P$ is at 0
+as polar axis, we have
+\begin{figure}[h]
+	\includegraphics{images/B1P2_320_F1.jpg}
+\end{figure}
+\begin{align*}
+	r &= bt \quad \text{(linear motion on 0r)}\\
+	\theta &= wt \quad \text{(uniform rotation)}\\
+	r &= bt 
+		= b \frac{\theta}{\omega}
+		= \frac{b}{\omega}\theta
+		= a\theta
+\end{align*}
+If $a > 0$, 
+having $r \rightarrow \infty $ as $ \theta \rightarrow \infty $, 
+the curve is a spiral admitting CPA as axis of symmetry 
+(since $r \rightarrow -r$ when $\theta \rightarrow - \theta$ ), 
+with PA as tangent at 0. (when $a<0$, the motion takes place
+in clockwise sense ).
+
+In the history of mathematics this curve is the first curve other than
+the circle to which tangent line has been constructed. 
+Also Archimedes used this curve to trisect an angle and squaring a circle.
+
+%
+2. The curve $r=e^{a\theta} \quad (a>0)$ is another spiral 
+since $r \rightarrow $ as $\theta \rightarrow \infty$. 
+Furthermore since 
+$r \rightarrow 0$ as $\theta \rightarrow -\infty $, 
+the pole is a point-asymptote.
+\begin{figure}[h]
+	\includegraphics{images/B1P2_320_F2.png}\\
+\end{figure}
+Among other spirals we mention the following.
+
+%
+3. $r \theta = a$ (hyperbolic or reciprocal spiral)
+
+
+
+%:b1p2/331 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p2/331}
+% ++++++++++++++++++++++++++++++++++++++
+\[
+	\frac{a}{b} = c \text{ or }  a = bc
+\]
+in view of \refeq{eq:b1p330eq1}, one gets
+\begin{align}
+	\label{eq:b1p331eq2}
+	%
+	\hAbs{a} = \hAbs{b} \hAbs{c}, 
+	\quad 
+	\arg a = \arg b + \arg c\\
+	\text{or}\\ % \nolabel\\
+	\hAbs{\frac{a}{b}} = \frac{{}\hAbs{a}}{\hAbs{b}} 
+	\quad \text{and} 
+	\quad
+	 \arg \frac{a}{b} = \arg a - \arg  b
+\end{align}
+In words, 
+\textit{
+	the modulus of the ratio of two complex numbers is 
+	the ratio of their moduli, and 
+	argument is the difference of their arguments.
+}
+
+%
+\begin{exmp}
+	Given the complex numbers	
+	\[
+		u = 6 + 2 \hI,  v = 4 + 2 \hI
+	\]
+	find the polar form of their product.
+	
+	\begin{enumerate}[label=(\alph*)]
+		
+		\item 
+		by the property \refeq{b1p330eq1}
+		
+		\item 
+		first finding the cartesian product, and 
+		then transforming to polar form.
+	\end{enumerate}
+	%
+	\begin{hSolution}
+		\begin{enumerate}[label=(\alph*)]
+			
+			\item 
+			\begin{align*}
+				\hAbs{uv} 
+					= \hAbs{u}\hAbs{v},
+				\quad 
+				\hAbs{uv} 
+					= \sqrt{40} \sqrt{20} 
+					= 20\sqrt{2},\\
+				\arg (uv) = \arg u + \arg v 
+					= \arctan \frac{1}{3} + \arctan \frac{1}{2}.\\
+				 tan \left( \arctan \frac{1}{3} + \arctan \frac{1}{2} \right) 
+					 = \frac{1/3 + 1/2}{1 - 1/6} 
+					 = 1\\
+				 \Rightarrow \arg (uv) = \frac{\pi}{4} +  k \pi\\
+				 \Rightarrow \hArg (uv) = \pi / 4, \text{ since } \Im (uv) > 0.\\
+				 \Rightarrow uv = 20 \sqrt{2} 
+				 	\left( \cos \frac{\pi}{4} + \hI \sin \frac{\pi}{4} \right)
+			\end{align*}
+			
+			\item 
+			\begin{align*}
+				uv = 20 + 20 \hI 
+					\Rightarrow  \hAbs{uv} = 20\sqrt{2},\\
+				\arg (uv) = \arctan 1\\
+				\Rightarrow 
+					\arg (uv) 
+					= \frac{\pi}{4} + k\pi 
+					= \frac{\pi}{4}, 
+				\text{ since } 
+				\Re (uv) > 0, 
+				\Im (uv) > 0.\\
+				\Rightarrow 
+					uv = 
+					20 \sqrt{2} \left( \cos \frac{\pi}{4} 
+					+ \hI \sin \frac{\pi}{4} \right)
+			\end{align*}
+		\end{enumerate}
+	\end{hSolution}
+\end{exmp}
+%
+\begin{exmp}
+	Given the complex numbers	
+\end{exmp}
+
+
+
+%: b1p2/333 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p2/333}
+% ++++++++++++++++++++++++++++++++++++++
+% =======================================
+\[
+    \xi = \rho(\cos\psi+ \hI \sin\psi)
+\]
+is an $n$th root of the complex number
+\[
+    z = r (\cos\theta + \hI \sin\theta),
+\]
+it satisfies the equation $\xi^n = z$ which, 
+by the use of De Moivre's formula, 
+gives 
+\[
+    \rho^n (\cos  n \psi + \hI \sin n \psi 
+    = r \cos ( \theta + 2 k \pi) + \hI \sin ( \theta + 2 k \pi)   
+\]
+and there
+\[
+	\rho^n = r, 
+	\quad  
+	n \psi = \theta + 2 k \pi
+\]
+\[
+	\rho = \sqrt [n] {r},
+	\enspace 
+	\psi = \frac{\theta}{n} + k \frac{2 \pi}{n} ,
+	\enspace 
+	k \in  \mathbb{Z}.
+\]
+Hence $z$ has $n$ distinct roots given by
+\[
+	z_{k} = \sqrt[n]{r} 
+	\left( 
+		\cos \left( \frac{\theta}{n} + k \frac{2 \pi}{n} \right)
+		+ \hI \sin \left( \frac{\theta}{n} +k \frac{2 \pi}{n} \right) 
+	\right) , 
+	\quad
+	k = 1, 2, \dotsc, n.
+\]
+
+Since $\hAbs{z_{k}} = \sqrt[n]{r}$, 
+all these roots $z_{1}, z_{2}, \dotsc, z_{n}$ lie on the circle 
+with center at the origin and radius  $\sqrt[n]{r}$  
+as vertices of a regular $n$-gon.
+
+In particular, the $n$th roots of $1$ (unity) are 
+\[
+    \varepsilon_{k} = \cos k \frac{2 \pi}{n}
+    	+ \hI \sin k \frac{2 \pi}{n},
+	\quad
+	k = 1, 2, \dotsc, n.
+\]
+one of which, 
+namely $\varepsilon_{n}$,  
+is the number $1$ 
+(Note that  $\varepsilon_{n} = \varepsilon_{0}$).
+
+If one of the $n$th roots is of $z$ is $z_{1}$, 
+then all the $n$th roots of $z$ are obtained multiplying $z_{1}$ by $\varepsilon_{1}, \dotsc, \varepsilon_{n}$.
+
+The roots of the polynomial equation $z^n - 1 = 0$ being
+$\varepsilon_{1} , \dots , \varepsilon_{n}$, 
+the following properties are the consequences of the relations 
+between the roots and coefficients:
+\begin{align*}
+	\sigma_{1} 
+		&= \sum \varepsilon_{k}
+		= \varepsilon_{1} + \dotsb +\varepsilon_{n}
+		= 0,\\
+	\sigma_{2} 
+		&= \sum_{k < l} \varepsilon_{k} \varepsilon_{l}
+		= \varepsilon_{1} \varepsilon_{2} 
+			+ \dotsb 
+			+ \varepsilon_{1} \varepsilon_{n} 
+			+ \dotsb
+			+ \varepsilon_{n-1} \varepsilon_{n}
+		= 0,\\
+    \sigma_{3} 
+		&= \sum_{k < l <m} \varepsilon_{k}\varepsilon_{l}\varepsilon_{m} 
+		= 0,\\
+		&\vdots\\
+	\sigma_{n-1}
+		&= 0.
+\end{align*}
+%: b1p2/423 ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p2/423}
+% ++++++++++++++++++++++++++++++++++++++
+%\footnote{Package used: mdframed for the box without bottom part}
+%\footnote{Package used: mathbx to get $ \Rightarrow$ (instead we can use $\Rightarrow$ )}
+%\footnote{Package used: graphbox to align the images}
+%\footnote{Set the mdframe option:newmdenv[bottomline=false]\{notbottom\}}}
+
+\begin{hEnumerateArabic}
+    \item[]
+        \begin{hEnumerateAlpha}
+            \item 
+            $ (Ch x + Sh x )^{- Argch x} 
+            	= { ( ch x - Sh x )}^{- Argsh (x-2)}  $
+            \item \( Ch 7x + Ch 5x + Ch 3x = Ch 6x + Ch 4x + Ch 2x \)
+        \end{hEnumerateAlpha}
+\end{hEnumerateArabic}
+\section*{ANSWERS TO EVEN NUMBERED EXERCISES}
+\begin{hEnumerateArabic}
+    \setcounter{enumi}{5}
+    \item 24/7, 25/7, 24/25 , 7/25, 7/24, 25/24.
+    \setcounter{enumi}{47}
+    \item 
+        \begin{hEnumerateAlpha}
+            \item R, $(2x + 2) Ch(x^2 + 2)$,
+            \item R, $-(2x - 2) Sech(x^2 - 2x) Th(x^2 - 2x)$
+        \end{hEnumerateAlpha}
+    \setcounter{enumi}{51}
+    \item 
+        \begin{hEnumerateAlpha}
+            \begin{multicols}{2}
+                \item $-\csc x$,
+                \columnbreak
+                \item $\csc x$
+            \end{multicols}
+        \end{hEnumerateAlpha}
+    \setcounter{enumi}{53}
+    \item
+%        \begin{hEnumerateAlpha}
+%            \begin{multicols}{2}
+%                \item 
+%                \includegraphics[align=t,scale=0.75]{images/b1p2-423-fig01.png}
+%                \columnbreak
+%                \item 
+%                \includegraphics[align=t,scale=0.75]{images/b1p2-423-fig02.png}
+%            \end{multicols}
+%        \end{hEnumerateAlpha}
+        \begin{hEnumerateAlpha}
+            \begin{multicols}{2}
+                \item 
+                \includegraphics[scale=0.75]{images/b1p2-423-fig01.png}
+                \columnbreak
+                \item 
+                \includegraphics[scale=0.75]{images/b1p2-423-fig02.png}
+            \end{multicols}
+        \end{hEnumerateAlpha}
+
+
+
+    \setcounter{enumi}{57}
+    \item
+        \begin{hEnumerateAlpha}
+            \begin{multicols}{2}
+                \item \( \ln \sqrt{3}\)  
+                \columnbreak
+                \item 0
+            \end{multicols}
+        \end{hEnumerateAlpha}
+    \setcounter{enumi}{59}
+    \item
+        \begin{hEnumerateAlpha}
+            \begin{multicols}{2}
+                \item 5/4  
+                \columnbreak
+                \item 0
+            \end{multicols}
+        \end{hEnumerateAlpha}
+\end{hEnumerateArabic}
+\section*{A SUMMARY}
+%\begin{notbottom}
+    \begin{hEnumerateArabic}
+        \item[6.1]
+            \begin{hEnumerateAlpha}{}
+                \item[] \(\ln x = \int_{1}^{x} \frac{dt}{t} (x > 0), \ln 1 = 0, \ln e = 1 \)
+                \item[] \(\ln ab = \ln a + \ln b, \ln \frac{a}{b} = \ln a - \ln b\)
+                \item[] \(\log_b x = \log_a x \cdot \log_b a\) (change of base)
+                \item[] \(\frac{d}{dx} a^{u(x)} = a^u \frac{du}{dx} \ln u, \frac{d}{dx} \log_a u(x) = \frac{1}{u} \frac{du}{dx} \log e  \)
+                \item[] \(\frac{d}{dx} u(x)^{v(x)} = u^v \big(\frac{dv}{dx} \ln u +  \frac{v}{u} \frac{du}{dx} \big)  \)
+                \item[] \( y = uv \ldots w  \Rightarrow \frac{y^\prime}{y} = \frac{u^\prime}{u} + \frac{v^\prime}{v} + \ldots + \frac{w^\prime}{w} \text{(logarithmic derivative)} \)
+            \end{hEnumerateAlpha}
+    \end{hEnumerateArabic}
+%\end{notbottom}
+
+
+
+
+% =========================================
+\end{document}  
+
+%==== templates ====
+
+%==== environments ====
+
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[width=0.9\textwidth]{images/SD-1-1p15A}
+%	\caption{Classification of complex numbers}
+%	\label{fig:classificationOfComplexNumbersA}
+%\end{figure}
+
+%\begin{center}
+%\begin{tabular}{cc}
+%\end{tabular}
+%\end{center}
+
+%\begin{exmp}
+%\begin{hSolution}
+%\end{hSolution}
+%\end{exmp}
+
+%\begin{hEnumerateAlpha}
+%\end{hEnumerateAlpha}
+
+%\begin{hEnumerateRoman}
+%\end{hEnumerateRoman}
+
+%$
+%\begin{bmatrix}
+%\end{bmatrix}
+%$
+
+%\frac{aaaa}{bbb}
+%\frac{a_{n}}{b_{n}}
+%\left( aaaa \right)
+%\Longrightarrow
+
+% ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/xxx}
+% ++++++++++++++++++++++++++++++++++++++
+
+%\begin{multicols}{2}
+%	bb
+%\columnbreak
+%	aa
+%\end{multicols}

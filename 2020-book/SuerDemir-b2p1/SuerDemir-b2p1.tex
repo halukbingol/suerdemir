@@ -1,0 +1,308 @@
+\documentclass[11pt]{amsbook}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{../HBSuerDemir}	% ------------------------
+
+%\usepackage[update,prepend]{epstopdf}
+
+\usepackage{epstopdf}
+\epstopdfsetup{outdir=./images}
+\epstopdfsetup{update} % only regenerate pdf files when eps file is newer
+
+\setcounter{tocdepth}{3}
+
+\usepackage{fancyhdr} % Header/Footer
+\pagestyle{fancy}
+%\fancyhead{}
+%\fancyhead[CO,CE]{óDraftó}
+\fancyfoot{}
+%\fancyfoot[CO,CE]{Draft}
+%\fancyfoot[RO,LE] {\thepage}
+\fancyfoot[L]{\footnotesize 
+Freshman Calculus by Suer \& Demir  \textbf{DRAFT} \\
+\LaTeX  by Haluk Bingol 
+\href{http://www.cmpe.boun.edu.tr/~bingol}
+{http://www.cmpe.boun.edu.tr/~bingol} 
+%\large 
+%\footnotesize 
+\today}
+\fancyfoot[R]{{\thepage} of \pageref{LastPage}}
+
+
+\begin{document}
+
+
+
+% -------------------------------------------------------------------
+\chapter{XXX}
+\label{chap:FuncLimCont}
+
+
+
+
+% -------------------------------------------------------------------
+\section{XXX}
+\label{sec:Numbers}
+
+
+%: b2p1/023 ++++++++++++++++++++++++++++++++++++++
+\hPage{b2p1/023}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{exmp}
+Test the series $\sum_2 \frac{1}{n \ln^{p} n} $ for convergence.\\
+	\begin{hSolution}
+		The series is of positive terms. 
+		The function $f(x) = \frac{1}{x \ln^{p} x}$ fulfils 
+		the conditions of integral test on $[2, \infty)$:
+		\[
+			\int_{2}^{\infty} \frac{\hDif x}{x\ ln^{p} x}
+			= \int_{2}^{\infty} \frac{\hDif \ln x}{\ln^{p}_{n} x}
+			= \frac{1}{1 - p} \ln^{\frac{1}{x} - p} \lvert^{\infty}_{2}
+		\]
+		converging when $p>1$, 
+		diverging when $p \le1$. 
+		Hence the given series is convergent only when $p > 1$.
+	\end{hSolution}
+\end{exmp}
+
+
+
+
+% =======================================
+\subsubsection{Comparison with other series}
+
+Below we give two tests by comparison of a given series of 
+positive terms with other such series.
+\begin{thm}[Test by inequality]
+	\label{thm:TestByInequality}
+	Let $\sum a_n$ be a given series of positive terms, and 
+	let $\sum c_n$, $\sum d_n$ be two such series 
+	which are convergent and divergent, respectively. 
+	Then $\sum a_n$ is convergent or divergent according as
+	\[
+		a_n \le c_n \quad \text{or}  \quad a_n\ge d_n
+	\]
+	for all $n > N$ for some $N$.
+
+	\begin{proof}
+		$a_n \le c_n \Rightarrow \sum_N^n a_n \leq \sum_N^n c_n$ . 
+		By hypothesis $\sum c_n$ having a limit as $n \rightarrow \infty $, 
+		the sequence $(\sum_N^n a_n)$ is bounded above by this limit. 
+		Since it is increasing, 
+		has a limit, and $\sum a_n$ is convergent.\\
+		Divergence case can be proved similiarly.
+	\end{proof}
+\end{thm}
+
+A generalization of the above \refthm{thm:TestByInequality}:
+The Theorem holds true when the inequalities are replaced by
+\[
+	a_n \leq p  c_n \text{ or } a_n \geq q d_n
+\]
+where $p$ and $q$ are positive numbers.
+
+%: b2p1/029 ++++++++++++++++++++++++++++++++++++++
+\hPage{b2p1/029}
+% ++++++++++++++++++++++++++++++++++++++
+\begin{thm}
+	XXXXXXX
+	\begin{proof}
+		It will suffice to prove that $s_{2n}$ and $s_{2n+1}$ have the same limit
+		\begin{align*}
+			s_{2n} 
+				&= (a_{0} - a_{1})
+				+ ... +(a_{2n} - a_{2n})
+				\geq 0 
+				\tag{from 1}\label{myeq}\\
+			s_{2n} 
+				&= a_{0} 
+				- (a_{1} - a_{2})
+				- \dotsb
+				- (a_{2n-2} - a_{2n-1})
+				- a_{2n} 
+				\leq a_{0} 
+				\tag{from 1}\label{mye1q}\\
+			\Longrightarrow 
+				&0 \leq s_{2n} \leq a_{0}.
+		\end{align*}
+%		\[
+%			s_{2n} 
+%				= (a_{0} - a_{1})
+%				+ ... +(a_{2n} - a_{2n})
+%				\geq 0 
+%				\tag{from 1}\label{myeq}
+%		\] 
+%		\[
+%			s_{2n} 
+%				= a_{0} 
+%				- (a_{1} - a_{2})
+%				- \dotsb
+%				- (a_{2n-2} - a_{2n-1})
+%				- a_{2n} 
+%				\leq a_{0} 
+%				\tag{from 1}\label{mye1q}
+%		\]
+		
+Hence $(s_{2n})$ is bounded, and being monotone increasing it converges to a limit s. 
+Now,
+		\[
+			s_{2n+1} 
+				= s_{2n}+a_{2n+1} + s + 0= s.
+		\]
+	\end{proof}
+\end{thm}
+\begin{cor}
+	In a convergent alternating series
+	\[
+		s 
+			= a_{0} - a_{1} + a_{2} - \dotsb + (-1) a_{n} + R_{n+1}
+	\]
+	with given hypothesis, the inequality
+	\[
+		\hAbs{R_{n+1}} < a_{n+1}
+	\]
+	holds, that is the error made in taking $s_{n}$ for s is less than $a_{n+1}$.
+	\begin{proof}
+		\begin{align*}
+			R_{n+1} 
+				&= (-1)^{n+1} (a_{n+1} - a_{n+2} + \dotsb)\\
+			\Longrightarrow \hAbs{R_{n+1}}
+				&= \hAbs{ a_{n+1} - a_{n+2} + \dotsb}\\
+				&= a_{n+1} - (a_{n+2} - a_{n+3}) - \dotsb < a_{n+1}.
+		\end{align*}
+	\end{proof}
+\end{cor}
+\begin{exmp}
+	Given the alternating harmonic series	
+	\[
+		1 - \frac{1}{2} + \frac{1}{3} 
+		- \dotsb 
+		+ (-1)^{n+1} \frac{1}{n} 
+		+ \dotsb
+	\]
+	\begin{hEnumerateAlpha}
+		\item
+		show its convergence
+		
+	\end{hEnumerateAlpha}
+\end{exmp}
+
+
+
+%: b2p1/031 ++++++++++++++++++++++++++++++++++++++
+\hPage{b2p1/031}
+% ++++++++++++++++++++++++++++++++++++++
+A series $\sum a_{n}$ such that $\sum|a_{n}|$ is convergent is called an
+\hDefinedC{absolutely convergent series}, and
+the above theorem states 
+that an absolutely convergent series is convergent.
+
+As the alternating harmonic series shows, a series may be
+convergent without being absolutely convergent. Such series are
+called \hDefinedC{simply convergent}~\footnote{
+	In many textbooks 
+	\hDefinedC{conditional convergent} or 
+	\hDefinedC{semi-convergent} 
+	terminologies are used instead of simply convergent.
+} 
+series:
+\begin{align*}
+    \sum|a_{n}| \text{ (conv.)} 
+        &\Longrightarrow 
+        \sum a_{n} \text{ (conv)} \dots \text{ abs. conv. of  } \sum a_{n}\\
+    \sum|a_{n}| \text{ (div.)} 
+        &\Longrightarrow 
+        \left\{
+            \begin{array}{ll}
+             \sum a_{n} \text{ (conv)} \dots \text{ simply. conv. of  } \sum a_{n}\\
+             \text{or}\\
+             \sum a_{n} \text{ (div)} 
+    \end{array}
+    \right.    
+\end{align*}
+There is an essential difference between the absolutely convergent series and simply convergent ones. 
+The absolutely convergent series have the following two properties among others:
+
+\begin{enumerate}
+
+    \item 
+    The terms can be rearranged in any order 
+    (rearrangement does not alter the sum).
+    
+    \item 
+    Finitely or infinitely many terms may be replaced by their sum.
+\end{enumerate}
+
+These properties may not be shared by simply convergent series, 
+that is, a rearrengement of terms in a simply convergent
+series may give a different sum as illustrated by the following example:
+
+Consider the simply alternating harmonic series
+\[
+    S
+    = 
+    1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots + (-1)^{n+1} \frac{1}{n} + \dots
+\]
+Let us rearrange the terms to have the series 
+\begin{align*}
+	S'
+	=
+	&\left( 1 - \frac{1}{2} - \frac{1}{4} \right)
+	+ \left( \frac{1}{3} - \frac{1}{6} - \frac{1}{8} \right) 
+	+ \left( \frac{1}{5} - \frac{1}{10} - \frac{1}{12} \right)\\
+	&+ \dots
+	+ \left(\frac{1}{2n+1} - \frac{1}{4n+2} -\frac{1}{4n+4} \right) 
+	+ \dots 
+\end{align*}
+
+
+
+% ========================================
+\end{document}  
+
+%==== templates ====
+
+%==== environments ====
+
+%\begin{figure}[htb]
+%	\centering
+%	\includegraphics[width=0.9\textwidth]{images/SD-1-1p15A}
+%	\caption{Classification of complex numbers}
+%	\label{fig:classificationOfComplexNumbersA}
+%\end{figure}
+
+%\begin{center}
+%\begin{tabular}{cc}
+%\end{tabular}
+%\end{center}
+
+%\begin{exmp}
+%\begin{hSolution}
+%\end{hSolution}
+%\end{exmp}
+
+%\begin{hEnumerateAlpha}
+%\end{hEnumerateAlpha}
+
+%\begin{hEnumerateRoman}
+%\end{hEnumerateRoman}
+
+%$
+%\begin{bmatrix}
+%\end{bmatrix}
+%$
+
+%\frac{aaaa}{bbb}
+%\frac{a_{n}}{b_{n}}
+%\left( aaaa \right)
+%\Longrightarrow
+
+% ++++++++++++++++++++++++++++++++++++++
+\hPage{b1p1/xxx}
+% ++++++++++++++++++++++++++++++++++++++
+
+%\begin{multicols}{2}
+%	bb
+%\columnbreak
+%	aa
+%\end{multicols}
